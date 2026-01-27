@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-labelledby="title desc" role="img">
+  <title id="title">Yubi Hana sakura logo</title>
+  <desc id="desc">A minimal sakura-like mark based on the original 24x24 icon.</desc>
+
+  <!--
+    This is a direct vector "upsampling" of your 24x24 icon:
+    - We keep the original paths (scaled up) so it renders identically.
+    - We keep `fill="currentColor"` behavior by setting a default `color` on the root.
+  -->
+  <g transform="translate(0 0) scale(8.3333333333)">
+    <g fill="none">
+      <path d="M12 3c1.6 2.3 1.6 4.4 0 6.2C10.4 7.4 10.4 5.3 12 3Z" fill="currentColor" opacity=".85"/>
+      <path d="M21 12c-2.3 1.6-4.4 1.6-6.2 0 1.8-1.6 3.9-1.6 6.2 0Z" fill="currentColor" opacity=".85"/>
+      <path d="M12 21c-1.6-2.3-1.6-4.4 0-6.2 1.6 1.8 1.6 3.9 0 6.2Z" fill="currentColor" opacity=".85"/>
+      <path d="M3 12c2.3-1.6 4.4-1.6 6.2 0-1.8 1.6-3.9 1.6-6.2 0Z" fill="currentColor" opacity=".85"/>
+      <circle cx="12" cy="12" r="1.7" fill="currentColor"/>
+    </g>
+  </g>
+
+  <!-- Default color for `currentColor` when used as an <img>. -->
+  <style>
+    svg{ color:#d98d97; }
+  </style>
+</svg>
