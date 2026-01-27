@@ -64,6 +64,14 @@ Yubi Hana — GitHub Pages Welcome Landing
 
     a{ color: inherit; text-decoration:none; }
     .wrap{ max-width: 1100px; margin: 0 auto; padding: 28px 18px 70px; position:relative; }
+    @supports (padding: max(0px)){
+      .wrap{
+        padding-left: max(18px, env(safe-area-inset-left));
+        padding-right: max(18px, env(safe-area-inset-right));
+        padding-top: max(28px, env(safe-area-inset-top));
+        padding-bottom: max(70px, env(safe-area-inset-bottom));
+      }
+    }
 
     /* Top bar */
     .topbar{
@@ -72,6 +80,7 @@ Yubi Hana — GitHub Pages Welcome Landing
       justify-content:space-between;
       gap: 14px;
       padding: 10px 4px 18px;
+      flex-wrap: wrap;
     }
     .brand{
       display:flex; align-items:center; gap: 10px;
@@ -108,6 +117,46 @@ Yubi Hana — GitHub Pages Welcome Landing
       padding: 9px 11px;
     }
 
+    /* Social links */
+    .social{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      color: var(--muted);
+    }
+    .icon-btn{
+      width: 38px;
+      height: 38px;
+      display:grid;
+      place-items:center;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #ffffffaa;
+      transition: transform .12s ease, background .2s ease, color .2s ease, border .2s ease;
+    }
+    .icon-btn:hover{
+      transform: translateY(-1px);
+      background: #fff;
+      color: var(--ink);
+    }
+    .icon-btn svg{ width: 18px; height: 18px; }
+    @media (max-width: 520px){
+      .topbar{ gap: 10px; padding-bottom: 12px; }
+      .brand-name{ font-size: 18px; }
+      .nav{
+        order: 3;
+        width: 100%;
+        padding-top: 6px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        gap: 10px;
+      }
+      .nav a{ padding: 10px 10px; }
+      .social{ order: 2; gap: 8px; }
+      .icon-btn{ width: 44px; height: 44px; }
+    }
+
     /* Hero */
     .hero{
       margin-top: 8px;
@@ -118,6 +167,17 @@ Yubi Hana — GitHub Pages Welcome Landing
     }
     @media (max-width: 920px){
       .hero{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px){
+      .hero{ gap: 14px; }
+      .hero-left{ padding: 24px 18px 18px; }
+      .kicker{ letter-spacing: .14em; }
+      h1{ font-size: clamp(32px, 10vw, 42px); }
+      .subtitle{ font-size: 14px; }
+      .cta-row{ gap: 10px; }
+      .cta-row .btn{ flex: 1; min-width: 160px; }
+      .hero-right{ min-height: 240px; }
+      .hero-right .badge{ left: 14px; right: 14px; bottom: 14px; }
     }
 
     .card{
@@ -394,6 +454,33 @@ Yubi Hana — GitHub Pages Welcome Landing
         <a href="#how">How it works</a>
         <a href="#order">Order</a>
       </nav>
+
+      <div class="social" aria-label="Social links">
+        <a class="icon-btn" href="INSTAGRAM" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="5" y="5" width="14" height="14" rx="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="16.5" cy="7.5" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+        <a class="icon-btn" href="TIKTOK" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M14 3v11.2a3.8 3.8 0 1 1-3.1-3.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 6.2c1.1 2.1 3 3.3 5 3.5V6.5c-1.6-.2-3.4-1.1-5-3.5Z" fill="currentColor" opacity=".9"/>
+          </svg>
+        </a>
+        <a class="icon-btn" href="XIAOHONGSHU" target="_blank" rel="noopener noreferrer" aria-label="Xiaohongshu (小红书)">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 7h10M9 11h6M8 15h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 4h12a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="2" opacity=".9"/>
+          </svg>
+        </a>
+        <a class="icon-btn" href="X" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
     <section class="hero">
@@ -538,12 +625,43 @@ Yubi Hana — GitHub Pages Welcome Landing
     const PRIVACY_URL = "PRIVACY_URL";
     const TERMS_URL = "TERMS_URL";
     const REFUND_URL = "REFUND_URL";
+    const INSTAGRAM = "yubihana"; // e.g. "@yourhandle" or "https://www.instagram.com/yourhandle/"
+    const TIKTOK = "yubihana"; // e.g. "@yourhandle" or "https://www.tiktok.com/@yourhandle"
+    const XIAOHONGSHU = "XIAOHONGSHU"; // Xiaohongshu profiles vary; best to paste full URL
+    const X = "lux"; // e.g. "@yourhandle" or "https://x.com/yourhandle"
+
+    function toSocialUrl(platform, value){
+      const v = String(value || "").trim();
+      if (!v || v === platform.toUpperCase()) return "";
+      if (v.includes("://")) return v;
+      const handle = v.replace(/^@/, "");
+      if (!handle) return "";
+      if (platform === "instagram") return `https://www.instagram.com/${handle}/`;
+      if (platform === "tiktok") return `https://www.tiktok.com/@${handle}`;
+      if (platform === "x") return `https://x.com/${handle}`;
+      return v;
+    }
 
     // Update all places that use placeholder URLs
     for (const a of document.querySelectorAll('a[href="ORDER_URL"]')) a.href = ORDER_URL;
-    const map = { "PRIVACY_URL": PRIVACY_URL, "TERMS_URL": TERMS_URL, "REFUND_URL": REFUND_URL };
+    const map = {
+      "PRIVACY_URL": PRIVACY_URL,
+      "TERMS_URL": TERMS_URL,
+      "REFUND_URL": REFUND_URL,
+      "INSTAGRAM": toSocialUrl("instagram", INSTAGRAM),
+      "TIKTOK": toSocialUrl("tiktok", TIKTOK),
+      "XIAOHONGSHU": toSocialUrl("xiaohongshu", XIAOHONGSHU),
+      "X": toSocialUrl("x", X),
+    };
     for (const [k,v] of Object.entries(map)) {
-      for (const a of document.querySelectorAll(`a[href="${k}"]`)) a.href = v;
+      for (const a of document.querySelectorAll(`a[href="${k}"]`)) {
+        if (!v) {
+          a.removeAttribute("href");
+          a.style.display = "none";
+        } else {
+          a.href = v;
+        }
+      }
     }
   </script>
 </body>
