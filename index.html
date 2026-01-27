@@ -1,0 +1,550 @@
+<!--
+Yubi Hana — GitHub Pages Welcome Landing
+1) Put this file as: index.html in your <username>.github.io repo (or /docs if using that)
+2) Add your images under /assets and update the paths below
+3) Replace ORDER_URL with your external ordering link
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Yubi Hana — Bloom on your fingertips. Premium press-on nails." />
+  <title>Yubi Hana | Bloom on your fingertips</title>
+
+  <!-- Fonts: elegant serif + clean sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Palette inspired by your reference image */
+      --bg: #fbf6f4;         /* warm off-white */
+      --panel: #ffffffcc;    /* glassy white */
+      --blush: #e9b4b8;      /* pink */
+      --rose: #d98d97;       /* deeper pink */
+      --gold: #c9a46a;       /* soft gold */
+      --ink: #2a2626;        /* near-black */
+      --muted: #6f6767;      /* muted text */
+      --line: #ead9da;       /* subtle borders */
+      --shadow: 0 18px 50px rgba(40, 25, 25, .10);
+      --radius: 22px;
+      --radius2: 28px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 550px at 10% 8%, #f7dde0 0%, transparent 65%),
+        radial-gradient(900px 600px at 92% 15%, #f2e4d2 0%, transparent 62%),
+        linear-gradient(180deg, var(--bg) 0%, #fff 60%, var(--bg) 100%);
+      overflow-x:hidden;
+    }
+
+    /* Decorative petals */
+    .petal{
+      position:absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      filter: blur(0px);
+      opacity:.35;
+      pointer-events:none;
+      background: radial-gradient(circle at 30% 30%, #f4cfd3 0%, transparent 60%);
+      transform: rotate(18deg);
+    }
+    .petal.p1{ top:-240px; left:-240px; }
+    .petal.p2{ top:-220px; right:-260px; background: radial-gradient(circle at 30% 30%, #f0dfc6 0%, transparent 60%); opacity:.32; }
+    .petal.p3{ bottom:-260px; left:15%; background: radial-gradient(circle at 30% 30%, #f4cfd3 0%, transparent 60%); opacity:.25; }
+
+    a{ color: inherit; text-decoration:none; }
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 28px 18px 70px; position:relative; }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 10px 4px 18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+    }
+    .brand-mark{
+      width:38px; height:38px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #f1c9cd, #f6e7d4);
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      display:grid; place-items:center;
+      border: 1px solid #ffffffaa;
+    }
+    .brand-mark svg{ width:22px; height:22px; opacity:.85; }
+    .brand-name{
+      font-family: "Playfair Display", serif;
+      letter-spacing: .2px;
+      font-size: 20px;
+      line-height:1;
+    }
+    .nav{
+      display:flex; gap: 14px; align-items:center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .nav a{
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease;
+    }
+    .nav a:hover{
+      background: #ffffffb0;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 9px 11px;
+    }
+
+    /* Hero */
+    .hero{
+      margin-top: 8px;
+      display:grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+    @media (max-width: 920px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      backdrop-filter: blur(8px);
+    }
+    .hero-left{
+      padding: 34px 30px 28px;
+      position:relative;
+    }
+
+    .kicker{
+      display:flex; align-items:center; gap: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: linear-gradient(145deg, var(--rose), var(--gold));
+      box-shadow: 0 6px 16px rgba(217,141,151,.25);
+    }
+
+    h1{
+      margin: 16px 0 10px;
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: clamp(40px, 4.4vw, 64px);
+      line-height: 1.02;
+      letter-spacing: .2px;
+      color: #3a2f30;
+    }
+    h1 .accent{
+      color: var(--rose);
+      position:relative;
+    }
+    h1 .accent:after{
+      content:"";
+      position:absolute; left:0; right:0; bottom:.08em;
+      height: 10px;
+      background: linear-gradient(90deg, #f3c9cd, transparent);
+      border-radius: 999px;
+      z-index:-1;
+      opacity:.65;
+    }
+
+    .subtitle{
+      margin: 10px 0 18px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 56ch;
+    }
+
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      margin-top: 14px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      font-size: 14px;
+      transition: transform .12s ease, box-shadow .2s ease, background .2s ease, border .2s ease;
+      user-select:none;
+    }
+    .btn-primary{
+      background: linear-gradient(145deg, var(--rose), #e6a3ab);
+      color: white;
+      box-shadow: 0 14px 26px rgba(217,141,151,.26);
+    }
+    .btn-primary:hover{ transform: translateY(-1px); box-shadow: 0 18px 34px rgba(217,141,151,.30); }
+    .btn-ghost{
+      background: #ffffffaa;
+      border-color: var(--line);
+      color: #3a2f30;
+    }
+    .btn-ghost:hover{ transform: translateY(-1px); background: #fff; }
+
+    .pill-row{
+      display:flex; flex-wrap:wrap; gap: 8px;
+      margin-top: 18px;
+    }
+    .pill{
+      font-size: 12px;
+      color: #5b5151;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #ffffffa8;
+    }
+
+    /* Right hero image */
+    .hero-right{
+      position:relative;
+      min-height: 320px;
+    }
+    .hero-media{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.10) 100%),
+        url("assets/hero.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.02);
+    }
+    .hero-right .badge{
+      position:absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      border: 1px solid #ffffffb8;
+      background: #ffffffb8;
+      backdrop-filter: blur(8px);
+      display:flex; gap: 10px; align-items:center;
+      box-shadow: 0 14px 34px rgba(0,0,0,.10);
+    }
+    .badge strong{
+      font-family:"Playfair Display", serif;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .badge span{
+      display:block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    /* Sections */
+    .grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .col-4{ grid-column: span 4; }
+    .col-6{ grid-column: span 6; }
+    .col-8{ grid-column: span 8; }
+    .col-12{ grid-column: span 12; }
+
+    @media (max-width: 920px){
+      .col-4,.col-6,.col-8{ grid-column: span 12; }
+    }
+
+    .section-card{
+      padding: 18px 18px;
+      border-radius: var(--radius);
+    }
+    .section-title{
+      display:flex; align-items:center; justify-content:space-between; gap: 10px;
+      padding: 10px 6px 2px;
+    }
+    .section-title h2{
+      margin:0;
+      font-family:"Playfair Display", serif;
+      font-size: 22px;
+      letter-spacing:.2px;
+      color: #3a2f30;
+    }
+    .section-title .mini{
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing:.14em;
+      text-transform: uppercase;
+      white-space:nowrap;
+    }
+
+    .feature{
+      display:flex; gap: 12px;
+      padding: 14px 12px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .feature svg{
+      flex: 0 0 22px;
+      margin-top: 2px;
+      color: var(--rose);
+    }
+    .feature strong{
+      display:block;
+      font-size: 14px;
+      margin-bottom: 3px;
+      color:#3a2f30;
+    }
+    .feature p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .shot{
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      overflow:hidden;
+      background:#fff;
+      min-height: 160px;
+      background-size: cover;
+      background-position:center;
+      position:relative;
+    }
+    .shot:after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.08) 100%);
+    }
+    .shot.s1{ background-image: url("assets/shot1.jpg"); }
+    .shot.s2{ background-image: url("assets/shot2.jpg"); }
+    @media (max-width: 520px){
+      .gallery{ grid-template-columns: 1fr; }
+      .shot{ min-height: 190px; }
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 26px;
+      padding: 18px 6px 0;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    footer a{ text-decoration: underline; text-underline-offset: 3px; }
+    .small{ font-size: 12px; color:#7a6f6f; }
+  </style>
+</head>
+
+<body>
+  <div class="petal p1"></div>
+  <div class="petal p2"></div>
+  <div class="petal p3"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <!-- Simple sakura-like icon -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3c1.6 2.3 1.6 4.4 0 6.2C10.4 7.4 10.4 5.3 12 3Z" fill="currentColor" opacity=".85"/>
+            <path d="M21 12c-2.3 1.6-4.4 1.6-6.2 0 1.8-1.6 3.9-1.6 6.2 0Z" fill="currentColor" opacity=".85"/>
+            <path d="M12 21c-1.6-2.3-1.6-4.4 0-6.2 1.6 1.8 1.6 3.9 0 6.2Z" fill="currentColor" opacity=".85"/>
+            <path d="M3 12c2.3-1.6 4.4-1.6 6.2 0-1.8 1.6-3.9 1.6-6.2 0Z" fill="currentColor" opacity=".85"/>
+            <circle cx="12" cy="12" r="1.7" fill="currentColor"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">Yubi Hana</div>
+          <div class="small">Press-on Nails</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#collections">Collections</a>
+        <a href="#how">How it works</a>
+        <a href="#order">Order</a>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div class="card hero-left">
+        <div class="kicker"><span class="dot"></span> Bloom on your fingertips</div>
+        <h1>Soft, elegant <span class="accent">press-on</span> nails.</h1>
+        <p class="subtitle">
+          Curated designs inspired by sakura tones—crafted for effortless wear, a refined finish, and a salon-like look in minutes.
+        </p>
+
+        <!-- Replace ORDER_URL with your external platform -->
+        <div class="cta-row" id="order">
+          <a class="btn btn-primary" href="ORDER_URL" target="_blank" rel="noopener noreferrer">
+            Place an order
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+
+        <div class="pill-row" aria-label="Highlights">
+          <span class="pill">Reusable</span>
+          <span class="pill">Comfort fit</span>
+          <span class="pill">Salon finish</span>
+          <span class="pill">Sakura-inspired</span>
+        </div>
+      </div>
+
+      <div class="card hero-right" aria-label="Hero image">
+        <!-- Put a hero image at assets/hero.jpg -->
+        <div class="hero-media"></div>
+        <div class="badge">
+          <div>
+            <strong>Yubi Hana</strong>
+            <span>Minimal. Delicate. Timeless.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" id="how">
+      <div class="card section-card col-6">
+        <div class="section-title">
+          <h2>How it works</h2>
+          <div class="mini">3 steps</div>
+        </div>
+
+        <div style="display:grid; gap:12px; margin-top:10px;">
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M7 12h10M7 8h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div>
+              <strong>Pick your design</strong>
+              <p>Choose a set that matches your mood—everyday blush, floral accents, or statement gradients.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <strong>Prep & apply</strong>
+              <p>Clean nails, size tips, then press on. Most sets apply in 10–15 minutes.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4.4 7-10a4 4 0 0 0-7-2 4 4 0 0 0-7 2c0 5.6 7 10 7 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <strong>Wear & reuse</strong>
+              <p>Enjoy a refined finish. Remove gently and reuse with proper care.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card section-card col-6" id="collections">
+        <div class="section-title">
+          <h2>Featured looks</h2>
+          <div class="mini">gallery</div>
+        </div>
+
+        <div class="gallery" style="margin-top:12px;">
+          <!-- Put images at assets/shot1.jpg and assets/shot2.jpg -->
+          <div class="shot s1" title="Featured look 1"></div>
+          <div class="shot s2" title="Featured look 2"></div>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="ORDER_URL" target="_blank" rel="noopener noreferrer">Shop now ↗</a>
+          <span class="small">Tip: add UTM tags to track conversions (e.g. <code>?utm_source=landing</code>).</span>
+        </div>
+      </div>
+
+      <div class="card section-card col-12">
+        <div class="section-title">
+          <h2>Support</h2>
+          <div class="mini">policies</div>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:10px;">
+          <div class="feature" style="flex:1; min-width:260px;">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 0 16 0A8 8 0 0 0 4 12Z" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <div>
+              <strong>Shipping & processing</strong>
+              <p>Set expectations clearly on the ordering platform (processing time, shipping regions, tracking).</p>
+            </div>
+          </div>
+          <div class="feature" style="flex:1; min-width:260px;">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4 2 8-6.5-4.5L5.5 21l2-8L2 9h7l3-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <div>
+              <strong>Quality care</strong>
+              <p>Add basic care tips and sizing guidance to reduce returns and improve customer satisfaction.</p>
+            </div>
+          </div>
+          <div class="feature" style="flex:1; min-width:260px;">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <div>
+              <strong>Contact</strong>
+              <p>Link your support email/Instagram here. Keep one channel as the primary to avoid missed messages.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <span class="small">© <span id="year"></span> Yubi Hana. Bloom on your fingertips.</span>
+      </div>
+      <div class="small">
+        <a href="PRIVACY_URL" target="_blank" rel="noopener noreferrer">Privacy</a>
+        &nbsp;•&nbsp;
+        <a href="TERMS_URL" target="_blank" rel="noopener noreferrer">Terms</a>
+        &nbsp;•&nbsp;
+        <a href="REFUND_URL" target="_blank" rel="noopener noreferrer">Refunds</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Optional: make the ORDER_URL variables easier to manage
+    // Replace these with your actual URLs:
+    const ORDER_URL = "ORDER_URL";
+    const PRIVACY_URL = "PRIVACY_URL";
+    const TERMS_URL = "TERMS_URL";
+    const REFUND_URL = "REFUND_URL";
+
+    // Update all places that use placeholder URLs
+    for (const a of document.querySelectorAll('a[href="ORDER_URL"]')) a.href = ORDER_URL;
+    const map = { "PRIVACY_URL": PRIVACY_URL, "TERMS_URL": TERMS_URL, "REFUND_URL": REFUND_URL };
+    for (const [k,v] of Object.entries(map)) {
+      for (const a of document.querySelectorAll(`a[href="${k}"]`)) a.href = v;
+    }
+  </script>
+</body>
+</html>
