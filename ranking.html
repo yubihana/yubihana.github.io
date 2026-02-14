@@ -1,16 +1,16 @@
 <!--
-Yubi Hana — GitHub Pages Welcome Landing
-1) Put this file as: index.html in your <username>.github.io repo (or /docs if using that)
+Yubi Hana — Press-on Nails Ranking Page
+1) Put this file as: ranking.html in your GitHub Pages repo
 2) Add your images under /assets and update the paths below
-3) Replace ORDER_URL with your external ordering link
+3) Replace framework/order links as needed
 -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Yubi Hana — Bloom on your fingertips. Premium press-on nails." />
-  <title>Yubi Hana | Bloom on your fingertips</title>
+  <meta name="description" content="Yubi Hana 2026 press-on nails ranking framework and value calculator." />
+  <title>Yubi Hana | Press-on Ranking 2026</title>
 
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CBMDSRK00"></script>
@@ -429,6 +429,169 @@ Yubi Hana — GitHub Pages Welcome Landing
       .shot{ min-height: 190px; }
     }
 
+    /* Value your collection */
+    .value-layout{
+      margin-top: 10px;
+      display:grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 16px;
+      align-items:start;
+    }
+    @media (max-width: 920px){
+      .value-layout{ grid-template-columns: 1fr; }
+    }
+    .value-note{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .brief-card{
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      display:grid;
+      gap: 10px;
+    }
+    .section-link-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    @media (max-width: 700px){
+      .section-link-grid{ grid-template-columns: 1fr; }
+    }
+    .section-link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fffafa;
+      padding: 9px 10px;
+      font-size: 13px;
+      color:#4f4444;
+      transition: background .2s ease, transform .12s ease;
+    }
+    .section-link:hover{
+      background:#fff;
+      transform: translateY(-1px);
+    }
+    .weight-list{
+      margin-top: 12px;
+      display:grid;
+      gap: 9px;
+    }
+    .weight-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background:#fff;
+      padding: 9px 11px;
+      font-size: 13px;
+      color:#4f4545;
+    }
+    .weight-item b{
+      font-weight: 600;
+      color:#352d2d;
+    }
+    .calc{
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background:#fff;
+      padding: 14px;
+    }
+    .calc-grid{
+      display:grid;
+      gap: 10px;
+      margin-top: 2px;
+    }
+    .calc-row{
+      display:grid;
+      grid-template-columns: 1fr 96px;
+      gap: 10px;
+      align-items:center;
+    }
+    .calc-row label{
+      font-size: 13px;
+      color:#504646;
+    }
+    .calc-row input{
+      width:100%;
+      border: 1px solid var(--line);
+      background:#fffdfd;
+      border-radius: 10px;
+      padding: 8px 9px;
+      font-size: 13px;
+      color:#3a2f30;
+    }
+    .calc-row input:focus{
+      outline:none;
+      border-color:#ddb6ba;
+      box-shadow: 0 0 0 3px rgba(221, 182, 186, .22);
+    }
+    .calc-meta{
+      margin-top: 10px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 520px){
+      .calc-row{ grid-template-columns: 1fr 84px; }
+      .calc-meta{ grid-template-columns: 1fr; }
+    }
+    .result-box{
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(145deg, #fff 0%, #fff6f7 100%);
+      display:grid;
+      gap: 8px;
+    }
+    .result-top{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .score-big{
+      font-family:"Playfair Display", serif;
+      font-size: 34px;
+      line-height: 1;
+      color:#3a2f30;
+    }
+    .tier-chip{
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border:1px solid var(--line);
+      background:#fff;
+      color:#4e4343;
+    }
+    .result-line{
+      display:flex;
+      justify-content:space-between;
+      gap: 8px;
+      color:#5a4f4f;
+      font-size: 13px;
+    }
+    .calc-foot{
+      margin-top: 10px;
+      color: #736868;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
     /* Footer */
     footer{
       margin-top: 26px;
@@ -465,14 +628,14 @@ Yubi Hana — GitHub Pages Welcome Landing
         </div>
         <div>
           <div class="brand-name">Yubi Hana</div>
-          <div class="small">Press-on Nails</div>
+          <div class="small">Ranking White Paper</div>
         </div>
       </div>
 
       <nav class="nav" aria-label="Primary">
-        <a href="#collections">Collections</a>
-        <a href="ranking.html">Value your Collection</a>
-        <a href="#how">How it works</a>
+        <a href="index.html#collections">Collections</a>
+        <a href="#value-collection">Value your collection</a>
+        <a href="index.html#how">How it works</a>
         <a href="ORDER_URL">Order</a>
       </nav>
 
@@ -504,167 +667,112 @@ Yubi Hana — GitHub Pages Welcome Landing
       </div>
     </div>
 
-    <section class="hero">
-      <div class="card hero-left">
-        <div class="kicker"><span class="dot"></span> Bloom on your fingertips</div>
-        <h1>Sharp & Elegant <span class="accent">Press-on</span> nails.</h1>
-        <p class="subtitle">
-          Curated designs inspired by sakura tones—crafted for effortless wear, a refined finish, and a salon-like look in minutes.
-        </p>
-
-        <!-- Replace ORDER_URL with your external platform -->
-        <div class="cta-row" id="order">
-          <a class="btn btn-primary" href="ORDER_URL" target="_blank" rel="noopener noreferrer">
-            Place an order
-            <span aria-hidden="true">↗</span>
-          </a>
-          <a class="btn btn-ghost" href="#how">How it works</a>
+    <section class="grid">
+      <div class="card section-card col-12" id="value-collection">
+        <div class="section-title">
+          <h2>Value your collection</h2>
+          <div class="mini">ranking model</div>
         </div>
 
-        <div class="pill-row" aria-label="Highlights">
-          <span class="pill">Reusable</span>
-          <span class="pill">Comfort fit</span>
-          <span class="pill">Salon finish</span>
-          <span class="pill">Sakura-inspired</span>
+        <div class="brief-card" aria-label="White paper summary">
+          <p class="value-note">
+            This page is the practical tool layer of the 2026 white paper. The model applies safety-first eligibility, then scores six weighted dimensions: material quality and value, craftsmanship, design aesthetics, adhesion performance, safety compliance, and value proposition.
+          </p>
+          <p class="value-note">
+            For transparent review, sections 1 to 5 now have dedicated pages. Open any section below, then return to this calculator to estimate score, tier, and confidence.
+          </p>
+          <div class="section-link-grid">
+            <a class="section-link" href="ranking-section-1-market-context.html">1) 2026 Market Context <span aria-hidden="true">↗</span></a>
+            <a class="section-link" href="ranking-section-2-regulatory-safety.html">2) Regulatory & Safety Baseline <span aria-hidden="true">↗</span></a>
+            <a class="section-link" href="ranking-section-3-framework-overview.html">3) Ranking Framework Overview <span aria-hidden="true">↗</span></a>
+            <a class="section-link" href="ranking-section-4-quantitative-methodology.html">4) Quantitative Methodology <span aria-hidden="true">↗</span></a>
+            <a class="section-link" href="ranking-section-5-data-collection.html">5) Data Collection & Sampling <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-      </div>
 
-      <div class="card hero-right" aria-label="Hero image">
-        <!-- Use the same looping shot video to keep the hero motioned -->
-        <div class="hero-media">
-          <video autoplay muted loop playsinline preload="metadata" poster="assets/shot2.jpg">
-            <source src="assets/shot2.mp4" type="video/mp4">
-            <source src="assets/shot2.webm" type="video/webm">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="badge">
+        <div class="value-layout">
           <div>
-            <strong>Yubi Hana</strong>
-            <span>Minimal. Delicate. Timeless.</span>
-          </div>
-        </div>
-      </div>
-    </section>
+            <p class="value-note">
+              Score your nail collection using the 2026 white-paper framework: material quality & value, craftsmanship, design beauty, adhesion performance, safety compliance, and an automatically calculated value proposition.
+            </p>
 
-    <section class="grid" id="how">
-      <div class="card section-card col-6">
-        <div class="section-title">
-          <h2>How it works</h2>
-          <div class="mini">3 steps</div>
-        </div>
-
-        <div style="display:grid; gap:12px; margin-top:10px;">
-          <div class="feature">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M7 12h10M7 8h10M7 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <div>
-              <strong>Pick your design</strong>
-              <p>Choose a set that matches your mood—everyday blush, floral accents, or statement gradients.</p>
+            <div class="weight-list" aria-label="Scoring weights">
+              <div class="weight-item"><span>Material quality and functional value</span><b>22%</b></div>
+              <div class="weight-item"><span>Craftsmanship</span><b>18%</b></div>
+              <div class="weight-item"><span>Design and beauty aesthetic quality</span><b>18%</b></div>
+              <div class="weight-item"><span>Adhesion performance</span><b>17%</b></div>
+              <div class="weight-item"><span>Safety standards and compliance</span><b>20%</b></div>
+              <div class="weight-item"><span>Value proposition (computed)</span><b>5%</b></div>
             </div>
           </div>
-          <div class="feature">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div>
-              <strong>Prep & apply</strong>
-              <p>Clean nails, size tips, then press on. Most sets apply in 10–15 minutes.</p>
+
+          <div class="calc" aria-label="Collection value calculator">
+            <div class="calc-grid">
+              <div class="calc-row">
+                <label for="metric-material">Material quality & value (0-100)</label>
+                <input id="metric-material" type="number" min="0" max="100" value="84" />
+              </div>
+              <div class="calc-row">
+                <label for="metric-craft">Craftsmanship (0-100)</label>
+                <input id="metric-craft" type="number" min="0" max="100" value="82" />
+              </div>
+              <div class="calc-row">
+                <label for="metric-design">Design beauty quality (0-100)</label>
+                <input id="metric-design" type="number" min="0" max="100" value="88" />
+              </div>
+              <div class="calc-row">
+                <label for="metric-adhesion">Adhesion performance (0-100)</label>
+                <input id="metric-adhesion" type="number" min="0" max="100" value="79" />
+              </div>
+              <div class="calc-row">
+                <label for="metric-safety">Safety and compliance (0-100)</label>
+                <input id="metric-safety" type="number" min="0" max="100" value="90" />
+              </div>
             </div>
-          </div>
-          <div class="feature">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4.4 7-10a4 4 0 0 0-7-2 4 4 0 0 0-7 2c0 5.6 7 10 7 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div>
-              <strong>Wear & reuse</strong>
-              <p>Enjoy a refined finish. Remove gently and reuse with proper care.</p>
+
+            <div class="calc-meta">
+              <div class="calc-row">
+                <label for="metric-price">Retail price (USD/set)</label>
+                <input id="metric-price" type="number" min="1" step="0.01" value="24" />
+              </div>
+              <div class="calc-row">
+                <label for="metric-wears">Median successful wears/set</label>
+                <input id="metric-wears" type="number" min="1" step="1" value="3" />
+              </div>
+              <div class="calc-row">
+                <label for="metric-coverage">Data coverage (%)</label>
+                <input id="metric-coverage" type="number" min="70" max="100" step="1" value="90" />
+              </div>
+              <div class="calc-row">
+                <label for="metric-reliability">Method reliability (%)</label>
+                <input id="metric-reliability" type="number" min="80" max="100" step="1" value="92" />
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="card section-card col-6" id="collections">
-        <div class="section-title">
-          <h2>Featured looks</h2>
-          <div class="mini">gallery</div>
-        </div>
-
-        <div class="gallery" style="margin-top:12px;">
-          <!-- Use looping MP4/WebM demos with poster fallbacks under assets/shot1.* and assets/shot2.* -->
-          <div class="shot s1" title="Featured look 1">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/shot1.jpg">
-              <source src="assets/shot1.mp4" type="video/mp4">
-              <source src="assets/shot1.webm" type="video/webm">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="shot s2" title="Featured look 2">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/shot2.jpg">
-              <source src="assets/xx.mp4" type="video/mp4">
-              <source src="assets/shot2.webm" type="video/webm">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn btn-primary" href="ORDER_URL" target="_blank" rel="noopener noreferrer">Shop now ↗</a>
-          <a class="btn btn-ghost" href="ranking.html" style="padding:10px 12px; font-size:12px;">Value your Collection</a>
-          <span class="small">Tip: add UTM tags to track conversions (e.g. <code>?utm_source=landing</code>).</span>
-        </div>
-      </div>
-
-      <div class="card section-card col-12">
-        <div class="section-title">
-          <h2>Support</h2>
-          <div class="mini">policies</div>
-        </div>
-
-        <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:10px;">
-          <div class="feature" style="flex:1; min-width:260px;">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 0 16 0A8 8 0 0 0 4 12Z" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <div>
-              <strong>Shipping & processing</strong>
-              <p>Set expectations clearly on the ordering platform (processing time, shipping regions, tracking).</p>
+            <div class="result-box" aria-live="polite">
+              <div class="result-top">
+                <div class="score-big" id="overall-score">0.0</div>
+                <div class="tier-chip" id="tier-label">Tier</div>
+              </div>
+              <div class="result-line"><span>Computed value proposition score</span><strong id="value-score">0.0</strong></div>
+              <div class="result-line"><span>Price per effective wear</span><strong id="price-per-wear">$0.00</strong></div>
+              <div class="result-line"><span>Core quality score (first 5 dimensions)</span><strong id="core-quality">0.0</strong></div>
+              <div class="result-line"><span>Confidence score</span><strong id="confidence-score">0.0%</strong></div>
             </div>
-          </div>
-          <div class="feature" style="flex:1; min-width:260px;">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4 2 8-6.5-4.5L5.5 21l2-8L2 9h7l3-7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            <div>
-              <strong>Quality care</strong>
-              <p>Add basic care tips and sizing guidance to reduce returns and improve customer satisfaction.</p>
-            </div>
-          </div>
-          <div class="feature" style="flex:1; min-width:260px;">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            <div>
-              <strong>Contact</strong>
-              <p>Link your support email/Instagram here. Keep one channel as the primary to avoid missed messages.</p>
+
+            <div class="calc-foot">
+              Formula reference: Overall = weighted sum of six dimensions. Value proposition score is estimated from quality normalized against price per effective wear, aligned with the white paper methodology.
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <footer>
-      <div>
-        <span class="small">© <span id="year"></span> Yubi Hana. Bloom on your fingertips.</span>
-      </div>
-      <div class="small">
-        <a href="PRIVACY_URL" target="_blank" rel="noopener noreferrer">Privacy</a>
-        &nbsp;•&nbsp;
-        <a href="TERMS_URL" target="_blank" rel="noopener noreferrer">Terms</a>
-        &nbsp;•&nbsp;
-        <a href="REFUND_URL" target="_blank" rel="noopener noreferrer">Refunds</a>
-      </div>
-    </footer>
   </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Optional: make the ORDER_URL variables easier to manage
-    // Replace these with your actual URLs:
     const ORDER_URL = "https://yubihana.square.site/";
-    const PRIVACY_URL = "PRIVACY_URL";
-    const TERMS_URL = "TERMS_URL";
-    const REFUND_URL = "REFUND_URL";
+
+    // Replace these with your actual social URLs/handles:
     const INSTAGRAM = "yubi.hana1"; // e.g. "@yourhandle" or "https://www.instagram.com/yourhandle/"
     const TIKTOK = "yubi_hana8"; // e.g. "@yourhandle" or "https://www.tiktok.com/@yourhandle"
     const XIAOHONGSHU = "XIAOHONGSHU"; // Xiaohongshu profiles vary; best to paste full URL
@@ -682,12 +790,10 @@ Yubi Hana — GitHub Pages Welcome Landing
       return v;
     }
 
-    // Update all places that use placeholder URLs
     for (const a of document.querySelectorAll('a[href="ORDER_URL"]')) a.href = ORDER_URL;
+
+    // Update social placeholders
     const map = {
-      "PRIVACY_URL": PRIVACY_URL,
-      "TERMS_URL": TERMS_URL,
-      "REFUND_URL": REFUND_URL,
       "INSTAGRAM": toSocialUrl("instagram", INSTAGRAM),
       "TIKTOK": toSocialUrl("tiktok", TIKTOK),
       "XIAOHONGSHU": toSocialUrl("xiaohongshu", XIAOHONGSHU),
@@ -703,6 +809,80 @@ Yubi Hana — GitHub Pages Welcome Landing
         }
       }
     }
+
+    function clamp(n, min, max){
+      return Math.min(max, Math.max(min, n));
+    }
+
+    function tierFromScore(score){
+      if (score >= 90) return "Platinum";
+      if (score >= 80) return "Gold";
+      if (score >= 70) return "Silver";
+      if (score >= 60) return "Bronze";
+      return "Watchlist";
+    }
+
+    function readNum(id, fallback){
+      const el = document.getElementById(id);
+      const n = Number(el?.value);
+      return Number.isFinite(n) ? n : fallback;
+    }
+
+    function computeCollectionValue(){
+      const material = clamp(readNum("metric-material", 0), 0, 100);
+      const craft = clamp(readNum("metric-craft", 0), 0, 100);
+      const design = clamp(readNum("metric-design", 0), 0, 100);
+      const adhesion = clamp(readNum("metric-adhesion", 0), 0, 100);
+      const safety = clamp(readNum("metric-safety", 0), 0, 100);
+
+      const price = Math.max(readNum("metric-price", 1), 0.01);
+      const wears = Math.max(readNum("metric-wears", 1), 1);
+      const coverage = clamp(readNum("metric-coverage", 90), 70, 100) / 100;
+      const reliability = clamp(readNum("metric-reliability", 90), 80, 100) / 100;
+
+      const coreWeighted = (material * 22 + craft * 18 + design * 18 + adhesion * 17 + safety * 20) / 95;
+      const pricePerWear = price / wears;
+
+      // White-paper aligned proxy: normalize quality against cost per effective wear.
+      const valueScore = clamp((coreWeighted / pricePerWear) * 8, 0, 100);
+      const overall = (material * 22 + craft * 18 + design * 18 + adhesion * 17 + safety * 20 + valueScore * 5) / 100;
+      const confidence = coverage * reliability * 100;
+      const tier = tierFromScore(overall);
+
+      const tierEl = document.getElementById("tier-label");
+      tierEl.textContent = tier;
+      if (tier === "Platinum") tierEl.style.background = "#f8eed8";
+      else if (tier === "Gold") tierEl.style.background = "#f7ead3";
+      else if (tier === "Silver") tierEl.style.background = "#f3f3f3";
+      else if (tier === "Bronze") tierEl.style.background = "#f4e4da";
+      else tierEl.style.background = "#fde8e8";
+
+      document.getElementById("overall-score").textContent = overall.toFixed(1);
+      document.getElementById("value-score").textContent = valueScore.toFixed(1);
+      document.getElementById("price-per-wear").textContent = `$${pricePerWear.toFixed(2)}`;
+      document.getElementById("core-quality").textContent = coreWeighted.toFixed(1);
+      document.getElementById("confidence-score").textContent = `${confidence.toFixed(1)}%`;
+    }
+
+    const calcInputs = [
+      "metric-material",
+      "metric-craft",
+      "metric-design",
+      "metric-adhesion",
+      "metric-safety",
+      "metric-price",
+      "metric-wears",
+      "metric-coverage",
+      "metric-reliability",
+    ];
+
+    calcInputs.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener("input", computeCollectionValue);
+      el.addEventListener("change", computeCollectionValue);
+    });
+    computeCollectionValue();
   </script>
 </body>
 </html>
