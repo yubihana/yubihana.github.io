@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 64" role="img" aria-label="Gold icon">
   <rect x="1" y="1" width="118" height="62" rx="31" fill="#f4e8ca" stroke="#dbc89d" stroke-width="2"/>
   <rect x="6" y="6" width="108" height="25" rx="12.5" fill="#ffffff" opacity=".28"/>
-  <text x="34" y="39" text-anchor="middle" font-size="18" font-weight="700" fill="#7a6230" font-family="Segoe UI Symbol, Noto Sans Symbols, Arial Unicode MS, sans-serif">★</text>
-  <text x="74" y="40" text-anchor="middle" font-size="18" font-weight="500" fill="#7a6230" font-family="Playfair Display, Georgia, serif">Gold</text>
+  <text x="30" y="39" text-anchor="middle" font-size="22" font-weight="700" fill="#7a6230" font-family="Segoe UI Symbol, Noto Sans Symbols, Arial Unicode MS, sans-serif">★</text>
+  <text x="80" y="40" text-anchor="middle" font-size="22" font-weight="500" fill="#7a6230" font-family="Playfair Display, Georgia, serif">Gold</text>
 </svg>
