@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 64" role="img" aria-label="High Collection icon">
+  <rect x="1" y="1" width="208" height="62" rx="31" fill="#0b0b0b" stroke="#c8a14f" stroke-width="2"/>
+  <rect x="6" y="6" width="198" height="25" rx="12.5" fill="#ffffff" opacity=".10"/>
+  <text x="52" y="39" text-anchor="middle" font-size="18" font-weight="700" fill="#f0cd73" font-family="Segoe UI Symbol, Noto Sans Symbols, Arial Unicode MS, sans-serif">♛</text>
+  <text x="126" y="40" text-anchor="middle" font-size="18" font-weight="500" fill="#f0cd73" font-family="Playfair Display, Georgia, serif">High Collection</text>
+</svg>

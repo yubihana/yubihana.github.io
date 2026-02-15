@@ -569,6 +569,9 @@ Yubi Hana — Press-on Nails Ranking Page
       color:#3a2f30;
     }
     .tier-chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 7px;
       border-radius: 999px;
       padding: 6px 10px;
       font-size: 12px;
@@ -579,6 +582,16 @@ Yubi Hana — Press-on Nails Ranking Page
       color:#4e4343;
       position: relative;
       overflow: hidden;
+    }
+    .tier-mark{
+      width: 14px;
+      height: 14px;
+      flex: 0 0 14px;
+      display:grid;
+      place-items:center;
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 700;
     }
     .tier-chip.tier-high{
       color: #f0cd73;
@@ -794,7 +807,10 @@ Yubi Hana — Press-on Nails Ranking Page
             <div class="result-box" aria-live="polite">
               <div class="result-top">
                 <div class="score-big" id="overall-score">0.0</div>
-                <div class="tier-chip" id="tier-label">Tier</div>
+                <div class="tier-chip" id="tier-label">
+                  <span class="tier-mark" id="tier-mark" aria-hidden="true">✿</span>
+                  <span id="tier-text">Tier</span>
+                </div>
               </div>
               <div class="result-line"><span>Computed value proposition score</span><strong id="value-score">0.0</strong></div>
               <div class="result-line"><span>Price per effective wear</span><strong id="price-per-wear">$0.00</strong></div>
@@ -857,10 +873,10 @@ Yubi Hana — Press-on Nails Ranking Page
     }
 
     function tierFromScore(score){
-      if (score >= 90) return { label: "High Collection", cls: "tier-high" };
-      if (score >= 80) return { label: "Diamond", cls: "tier-diamond" };
-      if (score >= 70) return { label: "Gold", cls: "tier-gold" };
-      return { label: "Pink", cls: "tier-pink" };
+      if (score >= 90) return { label: "High Collection", cls: "tier-high", mark: "♛" };
+      if (score >= 80) return { label: "Diamond", cls: "tier-diamond", mark: "◇" };
+      if (score >= 70) return { label: "Gold", cls: "tier-gold", mark: "★" };
+      return { label: "Pink", cls: "tier-pink", mark: "✿" };
     }
 
     function readNum(id, fallback){
@@ -891,7 +907,10 @@ Yubi Hana — Press-on Nails Ranking Page
       const tier = tierFromScore(overall);
 
       const tierEl = document.getElementById("tier-label");
-      tierEl.textContent = tier.label;
+      const tierTextEl = document.getElementById("tier-text");
+      const tierMarkEl = document.getElementById("tier-mark");
+      tierTextEl.textContent = tier.label;
+      tierMarkEl.textContent = tier.mark;
       tierEl.className = `tier-chip ${tier.cls}`;
 
       document.getElementById("overall-score").textContent = overall.toFixed(1);
