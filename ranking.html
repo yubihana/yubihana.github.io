@@ -573,10 +573,52 @@ Yubi Hana — Press-on Nails Ranking Page
       padding: 6px 10px;
       font-size: 12px;
       letter-spacing: .08em;
-      text-transform: uppercase;
+      text-transform: none;
       border:1px solid var(--line);
       background:#fff;
       color:#4e4343;
+      position: relative;
+      overflow: hidden;
+    }
+    .tier-chip.tier-high{
+      color: #f0cd73;
+      border-color: #c8a14f;
+      background: linear-gradient(120deg, #060606 0%, #1d1d1d 30%, #090909 56%, #2a2a2a 76%, #050505 100%);
+      background-size: 220% 220%;
+      animation: tierShimmer 3.2s linear infinite, tierBlinkHigh 1.1s steps(2, end) infinite;
+      box-shadow: inset 0 0 0 1px rgba(255,232,180,.18), 0 8px 20px rgba(0,0,0,.32);
+    }
+    .tier-chip.tier-diamond{
+      color: #35485c;
+      border-color: rgba(160,184,204,.75);
+      background: linear-gradient(125deg, rgba(255,255,255,.98) 0%, rgba(223,236,247,.55) 18%, rgba(255,255,255,.95) 38%, rgba(198,222,243,.50) 58%, rgba(255,255,255,.96) 78%, rgba(222,238,249,.52) 100%);
+      background-size: 240% 240%;
+      animation: tierShimmer 3.6s linear infinite, tierBlinkDiamond 1.4s steps(2, end) infinite;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.5), 0 6px 16px rgba(136,171,199,.18);
+    }
+    .tier-chip.tier-gold{
+      color: #6f4f05;
+      border-color: #d4b163;
+      background: linear-gradient(135deg, #f6e2ab 0%, #e9c97c 52%, #f2d894 100%);
+      box-shadow: 0 6px 14px rgba(201,164,106,.25);
+    }
+    .tier-chip.tier-pink{
+      color: #7c3f52;
+      border-color: #e1aabd;
+      background: linear-gradient(135deg, #f9d7e2 0%, #f3c2d2 100%);
+      box-shadow: 0 6px 14px rgba(217,141,151,.2);
+    }
+    @keyframes tierShimmer{
+      0%{ background-position: 0% 50%; }
+      100%{ background-position: 100% 50%; }
+    }
+    @keyframes tierBlinkHigh{
+      0%, 44%{ opacity: 1; filter: brightness(1); }
+      45%, 100%{ opacity: .7; filter: brightness(1.08); }
+    }
+    @keyframes tierBlinkDiamond{
+      0%, 54%{ opacity: 1; filter: brightness(1); }
+      55%, 100%{ opacity: .72; filter: brightness(1.12); }
     }
     .result-line{
       display:flex;
@@ -815,11 +857,10 @@ Yubi Hana — Press-on Nails Ranking Page
     }
 
     function tierFromScore(score){
-      if (score >= 90) return "Platinum";
-      if (score >= 80) return "Gold";
-      if (score >= 70) return "Silver";
-      if (score >= 60) return "Bronze";
-      return "Watchlist";
+      if (score >= 90) return { label: "High Collection", cls: "tier-high" };
+      if (score >= 80) return { label: "Diamond", cls: "tier-diamond" };
+      if (score >= 70) return { label: "Gold", cls: "tier-gold" };
+      return { label: "Pink", cls: "tier-pink" };
     }
 
     function readNum(id, fallback){
@@ -850,12 +891,8 @@ Yubi Hana — Press-on Nails Ranking Page
       const tier = tierFromScore(overall);
 
       const tierEl = document.getElementById("tier-label");
-      tierEl.textContent = tier;
-      if (tier === "Platinum") tierEl.style.background = "#f8eed8";
-      else if (tier === "Gold") tierEl.style.background = "#f7ead3";
-      else if (tier === "Silver") tierEl.style.background = "#f3f3f3";
-      else if (tier === "Bronze") tierEl.style.background = "#f4e4da";
-      else tierEl.style.background = "#fde8e8";
+      tierEl.textContent = tier.label;
+      tierEl.className = `tier-chip ${tier.cls}`;
 
       document.getElementById("overall-score").textContent = overall.toFixed(1);
       document.getElementById("value-score").textContent = valueScore.toFixed(1);
