@@ -104,7 +104,7 @@ Publish both `Overall Score` and `Confidence Score`.
 
 ## 4) Quantitative Methodology by Dimension
 
-### 4.1 Material Quality and Functional Value (22%)
+### 4.1 Material Quality and Functional Value (28%)
 
 Sub-metrics:
 
@@ -121,7 +121,7 @@ Suggested scoring bands:
 - 60-74: Acceptable but inconsistent or less durable
 - <60: Frequent defects or poor durability
 
-### 4.2 Craftsmanship (18%)
+### 4.2 Craftsmanship (28%)
 
 Sub-metrics:
 
@@ -152,7 +152,7 @@ Method:
 - Blind aesthetic panel (expert + consumer mix)
 - 5-point rubric mapped to 0-100 scale
 
-### 4.4 Adhesion Performance (17%)
+### 4.4 Adhesion Performance (18%)
 
 Sub-metrics:
 
@@ -168,7 +168,7 @@ Minimum test protocol:
 - Separate runs for glue and adhesive-tab usage
 - Report environment and user behavior controls
 
-### 4.5 Safety Standards and Compliance (20%)
+### 4.5 Safety Standards and Compliance (8%)
 
 Sub-metrics:
 
@@ -179,19 +179,6 @@ Sub-metrics:
 - Post-market safety signal handling maturity
 
 This dimension does not replace the hard safety gate. It differentiates strong vs minimal compliance among gate-passing products.
-
-### 4.6 Value Proposition (Based on All Above) (5%)
-
-Value is evaluated on top of quality outcomes:
-
-1. Compute `Price per Effective Wear`:
-`Price per Effective Wear = Retail Price / Median Successful Wears per Set`
-2. Compute normalized quality score from the first five dimensions.
-3. Value index:
-`Value Index = Normalized Quality / Price per Effective Wear`
-4. Map Value Index to 0-100 against category benchmarks.
-
-This prevents low-price/low-quality products from ranking too high and rewards durable, safer products with repeat utility.
 
 ---
 

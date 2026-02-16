@@ -731,7 +731,7 @@ Yubi Hana — Press-on Nails Ranking Page
 
         <div class="brief-card" aria-label="White paper summary">
           <p class="value-note">
-            This page is the practical tool layer of the 2026 white paper. The model applies safety-first eligibility, then scores six weighted dimensions: material quality and value, craftsmanship, design aesthetics, adhesion performance, safety compliance, and value proposition.
+            This page is the practical tool layer of the 2026 white paper. The model applies safety-first eligibility, then scores five weighted dimensions: material quality and functional value, craftsmanship, design aesthetics, adhesion performance, and safety compliance.
           </p>
           <p class="value-note">
             For transparent review, sections 1 to 5 now have dedicated pages. Open any section below, then return to this calculator to estimate score, tier, and confidence.
@@ -748,23 +748,22 @@ Yubi Hana — Press-on Nails Ranking Page
         <div class="value-layout">
           <div>
             <p class="value-note">
-              Score your nail collection using the 2026 white-paper framework: material quality & value, craftsmanship, design beauty, adhesion performance, safety compliance, and an automatically calculated value proposition.
+              Score your nail collection using the 2026 white-paper framework: material quality and functional value, craftsmanship, design beauty, adhesion performance, and safety compliance.
             </p>
 
             <div class="weight-list" aria-label="Scoring weights">
-              <div class="weight-item"><span>Material quality and functional value</span><b>22%</b></div>
-              <div class="weight-item"><span>Craftsmanship</span><b>18%</b></div>
-              <div class="weight-item"><span>Design and beauty aesthetic quality</span><b>18%</b></div>
-              <div class="weight-item"><span>Adhesion performance</span><b>17%</b></div>
-              <div class="weight-item"><span>Safety standards and compliance</span><b>20%</b></div>
-              <div class="weight-item"><span>Value proposition (computed)</span><b>5%</b></div>
+              <div class="weight-item"><span>Material quality and value</span><b>28%</b></div>
+              <div class="weight-item"><span>Craftsmanship</span><b>28%</b></div>
+              <div class="weight-item"><span>Design aesthetic value</span><b>18%</b></div>
+              <div class="weight-item"><span>Adhesion performance</span><b>18%</b></div>
+              <div class="weight-item"><span>Safety standards and compliance</span><b>8%</b></div>
             </div>
           </div>
 
           <div class="calc" aria-label="Collection value calculator">
             <div class="calc-grid">
               <div class="calc-row">
-                <label for="metric-material">Material quality & value (0-100)</label>
+                <label for="metric-material">Material quality and value (0-100)</label>
                 <input id="metric-material" type="number" min="0" max="100" value="84" />
               </div>
               <div class="calc-row">
@@ -772,7 +771,7 @@ Yubi Hana — Press-on Nails Ranking Page
                 <input id="metric-craft" type="number" min="0" max="100" value="82" />
               </div>
               <div class="calc-row">
-                <label for="metric-design">Design beauty quality (0-100)</label>
+                <label for="metric-design">Design beauty value (0-100)</label>
                 <input id="metric-design" type="number" min="0" max="100" value="88" />
               </div>
               <div class="calc-row">
@@ -786,14 +785,6 @@ Yubi Hana — Press-on Nails Ranking Page
             </div>
 
             <div class="calc-meta">
-              <div class="calc-row">
-                <label for="metric-price">Retail price (USD/set)</label>
-                <input id="metric-price" type="number" min="1" step="0.01" value="24" />
-              </div>
-              <div class="calc-row">
-                <label for="metric-wears">Median successful wears/set</label>
-                <input id="metric-wears" type="number" min="1" step="1" value="3" />
-              </div>
               <div class="calc-row">
                 <label for="metric-coverage">Data coverage (%)</label>
                 <input id="metric-coverage" type="number" min="70" max="100" step="1" value="90" />
@@ -812,14 +803,12 @@ Yubi Hana — Press-on Nails Ranking Page
                   <span id="tier-text">Tier</span>
                 </div>
               </div>
-              <div class="result-line"><span>Computed value proposition score</span><strong id="value-score">0.0</strong></div>
-              <div class="result-line"><span>Price per effective wear</span><strong id="price-per-wear">$0.00</strong></div>
-              <div class="result-line"><span>Core quality score (first 5 dimensions)</span><strong id="core-quality">0.0</strong></div>
+              <div class="result-line"><span>Weighted quality score (5 dimensions)</span><strong id="core-quality">0.0</strong></div>
               <div class="result-line"><span>Confidence score</span><strong id="confidence-score">0.0%</strong></div>
             </div>
 
             <div class="calc-foot">
-              Formula reference: Overall = weighted sum of six dimensions. Value proposition score is estimated from quality normalized against price per effective wear, aligned with the white paper methodology.
+              Formula reference: Overall = weighted sum of five dimensions using 28/28/18/18/8 weights, aligned with the white paper methodology.
             </div>
           </div>
         </div>
@@ -892,17 +881,10 @@ Yubi Hana — Press-on Nails Ranking Page
       const adhesion = clamp(readNum("metric-adhesion", 0), 0, 100);
       const safety = clamp(readNum("metric-safety", 0), 0, 100);
 
-      const price = Math.max(readNum("metric-price", 1), 0.01);
-      const wears = Math.max(readNum("metric-wears", 1), 1);
       const coverage = clamp(readNum("metric-coverage", 90), 70, 100) / 100;
       const reliability = clamp(readNum("metric-reliability", 90), 80, 100) / 100;
 
-      const coreWeighted = (material * 22 + craft * 18 + design * 18 + adhesion * 17 + safety * 20) / 95;
-      const pricePerWear = price / wears;
-
-      // White-paper aligned proxy: normalize quality against cost per effective wear.
-      const valueScore = clamp((coreWeighted / pricePerWear) * 8, 0, 100);
-      const overall = (material * 22 + craft * 18 + design * 18 + adhesion * 17 + safety * 20 + valueScore * 5) / 100;
+      const overall = (material * 28 + craft * 28 + design * 18 + adhesion * 18 + safety * 8) / 100;
       const confidence = coverage * reliability * 100;
       const tier = tierFromScore(overall);
 
@@ -914,9 +896,7 @@ Yubi Hana — Press-on Nails Ranking Page
       tierEl.className = `tier-chip ${tier.cls}`;
 
       document.getElementById("overall-score").textContent = overall.toFixed(1);
-      document.getElementById("value-score").textContent = valueScore.toFixed(1);
-      document.getElementById("price-per-wear").textContent = `$${pricePerWear.toFixed(2)}`;
-      document.getElementById("core-quality").textContent = coreWeighted.toFixed(1);
+      document.getElementById("core-quality").textContent = overall.toFixed(1);
       document.getElementById("confidence-score").textContent = `${confidence.toFixed(1)}%`;
     }
 
@@ -926,8 +906,6 @@ Yubi Hana — Press-on Nails Ranking Page
       "metric-design",
       "metric-adhesion",
       "metric-safety",
-      "metric-price",
-      "metric-wears",
       "metric-coverage",
       "metric-reliability",
     ];
