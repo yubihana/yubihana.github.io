@@ -33,6 +33,11 @@
         linear-gradient(180deg, var(--bg) 0%, #fff 60%, var(--bg) 100%);
       min-height: 100vh;
     }
+    img{
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
     .wrap{
       max-width: 980px;
@@ -70,6 +75,14 @@
     .nav a:hover{
       color: var(--ink);
       background: #fff;
+    }
+    @media (max-width: 520px){
+      .nav{
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+      }
     }
 
     .card{
@@ -190,6 +203,22 @@
       border-color: var(--line);
       color: #3a2f30;
     }
+    .table-scroll{
+      margin-top: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table-scroll table{
+      margin-top: 0;
+      min-width: 520px;
+    }
+    @media (max-width: 640px){
+      .table-scroll{
+        margin-left: -4px;
+        margin-right: -4px;
+        padding: 0 4px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -250,52 +279,54 @@
             <button class="unit-btn" type="button" data-unit="inch" aria-pressed="false">inch</button>
           </div>
           <p>Save your numbers in this format for future orders:</p>
-          <table aria-label="Nail size record example">
-            <thead>
-              <tr>
-                <th>Size</th>
-                <th>Thumb</th>
-                <th>Index</th>
-                <th>Middle</th>
-                <th>Ring</th>
-                <th>Pinky</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>XS</td>
-                <td data-mm="14">14</td>
-                <td data-mm="10">10</td>
-                <td data-mm="11">11</td>
-                <td data-mm="10">10</td>
-                <td data-mm="8">8</td>
-              </tr>
-              <tr>
-                <td>S</td>
-                <td data-mm="15">15</td>
-                <td data-mm="11">11</td>
-                <td data-mm="12">12</td>
-                <td data-mm="11">11</td>
-                <td data-mm="9">9</td>
-              </tr>
-              <tr>
-                <td>M</td>
-                <td data-mm="16">16</td>
-                <td data-mm="12">12</td>
-                <td data-mm="13">13</td>
-                <td data-mm="12">12</td>
-                <td data-mm="10">10</td>
-              </tr>
-              <tr>
-                <td>L</td>
-                <td data-mm="17">17</td>
-                <td data-mm="13">13</td>
-                <td data-mm="14">14</td>
-                <td data-mm="13">13</td>
-                <td data-mm="11">11</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-scroll" role="region" aria-label="Nail size record example">
+            <table>
+              <thead>
+                <tr>
+                  <th>Size</th>
+                  <th>Thumb</th>
+                  <th>Index</th>
+                  <th>Middle</th>
+                  <th>Ring</th>
+                  <th>Pinky</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>XS</td>
+                  <td data-mm="14">14</td>
+                  <td data-mm="10">10</td>
+                  <td data-mm="11">11</td>
+                  <td data-mm="10">10</td>
+                  <td data-mm="8">8</td>
+                </tr>
+                <tr>
+                  <td>S</td>
+                  <td data-mm="15">15</td>
+                  <td data-mm="11">11</td>
+                  <td data-mm="12">12</td>
+                  <td data-mm="11">11</td>
+                  <td data-mm="9">9</td>
+                </tr>
+                <tr>
+                  <td>M</td>
+                  <td data-mm="16">16</td>
+                  <td data-mm="12">12</td>
+                  <td data-mm="13">13</td>
+                  <td data-mm="12">12</td>
+                  <td data-mm="10">10</td>
+                </tr>
+                <tr>
+                  <td>L</td>
+                  <td data-mm="17">17</td>
+                  <td data-mm="13">13</td>
+                  <td data-mm="14">14</td>
+                  <td data-mm="13">13</td>
+                  <td data-mm="11">11</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 

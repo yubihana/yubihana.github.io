@@ -54,6 +54,11 @@ Yubi Hana — Press-on Nails Ranking Page
         linear-gradient(180deg, var(--bg) 0%, #fff 60%, var(--bg) 100%);
       overflow-x:hidden;
     }
+    img{
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
     /* Decorative petals */
     .petal{
@@ -427,6 +432,13 @@ Yubi Hana — Press-on Nails Ranking Page
     @media (max-width: 520px){
       .gallery{ grid-template-columns: 1fr; }
       .shot{ min-height: 190px; }
+    }
+    @media (max-width: 520px){
+      .section-title{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .section-title .mini{ white-space: normal; }
     }
 
     /* Value your collection */
