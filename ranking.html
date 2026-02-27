@@ -43,7 +43,7 @@ Yubi Hana — Press-on Nails Ranking Page
     }
 
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    html,body{ height:100%; overflow-x:hidden; }
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -53,6 +53,7 @@ Yubi Hana — Press-on Nails Ranking Page
         radial-gradient(900px 600px at 92% 15%, #f2e4d2 0%, transparent 62%),
         linear-gradient(180deg, var(--bg) 0%, #fff 60%, var(--bg) 100%);
       overflow-x:hidden;
+      max-width: 100vw;
     }
     img{
       max-width: 100%;
@@ -75,6 +76,9 @@ Yubi Hana — Press-on Nails Ranking Page
     .petal.p1{ top:-240px; left:-240px; }
     .petal.p2{ top:-220px; right:-260px; background: radial-gradient(circle at 30% 30%, #f0dfc6 0%, transparent 60%); opacity:.32; }
     .petal.p3{ bottom:-260px; left:15%; background: radial-gradient(circle at 30% 30%, #f4cfd3 0%, transparent 60%); opacity:.25; }
+    @media (max-width: 1024px){
+      .petal{ display:none; }
+    }
 
     a{ color: inherit; text-decoration:none; }
     .wrap{ max-width: 1100px; margin: 0 auto; padding: 28px 18px 70px; position:relative; }
