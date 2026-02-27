@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 64" role="img" aria-label="Diamond icon">
-  <rect x="1" y="1" width="158" height="62" rx="31" fill="#e9f1f8" stroke="#bfd0df" stroke-width="2"/>
-  <rect x="6" y="6" width="148" height="25" rx="12.5" fill="#ffffff" opacity=".32"/>
-  <text x="36" y="39" text-anchor="middle" font-size="22" font-weight="700" fill="#4d6378" font-family="Segoe UI Symbol, Noto Sans Symbols, Arial Unicode MS, sans-serif">◇</text>
-  <text x="96" y="40" text-anchor="middle" font-size="22" font-weight="500" fill="#4d6378" font-family="Playfair Display, Georgia, serif">Diamond</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 64" role="img" aria-label="Diamond icon">
+  <rect x="1" y="1" width="208" height="62" rx="31" fill="#e9f1f8" stroke="#bfd0df" stroke-width="2"/>
+  <rect x="6" y="6" width="198" height="25" rx="12.5" fill="#ffffff" opacity=".32"/>
+  <text x="34" y="39" text-anchor="middle" font-size="22" font-weight="700" fill="#4d6378" font-family="Segoe UI Symbol, Noto Sans Symbols, Arial Unicode MS, sans-serif">◇</text>
+  <text x="122" y="40" text-anchor="middle" font-size="22" font-weight="500" fill="#4d6378" font-family="Playfair Display, Georgia, serif">Diamond</text>
 </svg>

@@ -1,0 +1,759 @@
+<!--
+Yubi Hana — Collections Page
+1) Put this file as: collections.html in your GitHub Pages repo
+2) Update collection visuals as needed
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Yubi Hana collections — High Collection, Diamond, Gold, Pink." />
+  <title>Yubi Hana | Collections</title>
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2CBMDSRK00"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-2CBMDSRK00");
+  </script>
+
+  <!-- Fonts: elegant serif + clean sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #fbf6f4;
+      --panel: #ffffffcc;
+      --blush: #e9b4b8;
+      --rose: #d98d97;
+      --gold: #c9a46a;
+      --ink: #2a2626;
+      --muted: #6f6767;
+      --line: #ead9da;
+      --shadow: 0 18px 50px rgba(40, 25, 25, .10);
+      --radius: 22px;
+      --radius2: 28px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 550px at 10% 8%, #f7dde0 0%, transparent 65%),
+        radial-gradient(900px 600px at 92% 15%, #f2e4d2 0%, transparent 62%),
+        linear-gradient(180deg, var(--bg) 0%, #fff 60%, var(--bg) 100%);
+      overflow-x:hidden;
+    }
+
+    .petal{
+      position:absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      opacity:.35;
+      pointer-events:none;
+      background: radial-gradient(circle at 30% 30%, #f4cfd3 0%, transparent 60%);
+      transform: rotate(18deg);
+    }
+    .petal.p1{ top:-240px; left:-240px; }
+    .petal.p2{ top:-220px; right:-260px; background: radial-gradient(circle at 30% 30%, #f0dfc6 0%, transparent 60%); opacity:.32; }
+    .petal.p3{ bottom:-260px; left:15%; background: radial-gradient(circle at 30% 30%, #f4cfd3 0%, transparent 60%); opacity:.25; }
+
+    a{ color: inherit; text-decoration:none; }
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 28px 18px 70px; position:relative; }
+    @supports (padding: max(0px)){
+      .wrap{
+        padding-left: max(18px, env(safe-area-inset-left));
+        padding-right: max(18px, env(safe-area-inset-right));
+        padding-top: max(28px, env(safe-area-inset-top));
+        padding-bottom: max(70px, env(safe-area-inset-bottom));
+      }
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 10px 4px 18px;
+      flex-wrap: wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+    }
+    .brand-mark{
+      width:38px; height:38px;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #f1c9cd, #f6e7d4);
+      box-shadow: 0 10px 20px rgba(0,0,0,.06);
+      display:grid; place-items:center;
+      border: 1px solid #ffffffaa;
+    }
+    .brand-mark svg{ width:22px; height:22px; opacity:.85; }
+    .brand-name{
+      font-family: "Playfair Display", serif;
+      letter-spacing: .2px;
+      font-size: 20px;
+      line-height:1;
+    }
+    .small{ font-size: 12px; color:#7a6f6f; }
+    .nav{
+      display:flex; gap: 14px; align-items:center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .nav a{
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: background .2s ease, color .2s ease;
+    }
+    .nav a:hover{
+      background: #ffffffb0;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      padding: 9px 11px;
+    }
+
+    .social{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      color: var(--muted);
+    }
+    .icon-btn{
+      width: 38px;
+      height: 38px;
+      display:grid;
+      place-items:center;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #ffffffaa;
+      transition: transform .12s ease, background .2s ease, color .2s ease, border .2s ease;
+    }
+    .icon-btn:hover{
+      transform: translateY(-1px);
+      background: #fff;
+      color: var(--ink);
+    }
+    .icon-btn svg{ width: 18px; height: 18px; }
+    @media (max-width: 520px){
+      .topbar{ gap: 10px; padding-bottom: 12px; }
+      .brand-name{ font-size: 18px; }
+      .nav{
+        order: 3;
+        width: 100%;
+        padding-top: 6px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        gap: 10px;
+      }
+      .nav a{ padding: 10px 10px; }
+      .social{ order: 2; gap: 8px; }
+      .icon-btn{ width: 44px; height: 44px; }
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero{
+      margin-top: 8px;
+      padding: 30px 26px 24px;
+    }
+    .kicker{
+      display:flex; align-items:center; gap: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: linear-gradient(145deg, var(--rose), var(--gold));
+      box-shadow: 0 6px 16px rgba(217,141,151,.25);
+    }
+    h1{
+      margin: 16px 0 8px;
+      font-family: "Playfair Display", serif;
+      font-weight: 600;
+      font-size: clamp(34px, 4.4vw, 58px);
+      line-height: 1.05;
+      letter-spacing: .2px;
+      color: #3a2f30;
+    }
+    .subtitle{
+      margin: 8px 0 2px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 64ch;
+    }
+
+    .grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .col-3{ grid-column: span 3; }
+    .col-12{ grid-column: span 12; }
+    @media (max-width: 980px){
+      .col-3{ grid-column: span 6; }
+    }
+    @media (max-width: 620px){
+      .col-3{ grid-column: span 12; }
+    }
+
+    .collection-card{
+      padding: 18px 18px 20px;
+      border-radius: var(--radius);
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      min-height: 260px;
+      background: #fff;
+    }
+    .album{
+      position: relative;
+      height: 132px;
+      border-radius: 16px;
+    }
+    .album .frame{
+      position:absolute;
+      inset: 0;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background-color: #f7f1ef;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      overflow: hidden;
+    }
+    .album .frame::after{
+      content:"";
+      position:absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.18));
+      opacity: .35;
+    }
+    .album .frame.back{
+      transform: rotate(-5deg) translate(-6px, -6px);
+      opacity: .75;
+    }
+    .album .frame.mid{
+      transform: rotate(3deg) translate(6px, -2px);
+      opacity: .9;
+    }
+    .album .frame.top{
+      position: relative;
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      padding: 12px;
+    }
+    .album .frame.top > *{
+      position: relative;
+      z-index: 1;
+    }
+    .album .label{
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #8a7f7f;
+    }
+    .album .shine{
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,.95), rgba(255,255,255,0));
+      border: 1px solid #ffffffb8;
+    }
+    .collection-title{
+      display:block;
+      margin: 4px 0 0;
+    }
+    .collection-title{
+      display:flex;
+      justify-content:center;
+    }
+    .collection-title img{
+      height: 34px;
+      width: auto;
+      display:block;
+    }
+    .collection-card p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    footer{
+      margin-top: 26px;
+      padding: 18px 6px 0;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    footer a{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .album-btn{
+      all: unset;
+      display:block;
+      cursor: pointer;
+    }
+    .album-btn:focus-visible .album{
+      outline: 2px solid #bfa07a;
+      outline-offset: 4px;
+      border-radius: 18px;
+    }
+
+    .album-modal{
+      position: fixed;
+      inset: 0;
+      background: rgba(20,16,16,.65);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index: 50;
+      padding: 22px;
+      backdrop-filter: blur(4px);
+    }
+    .album-modal.open{ display:flex; }
+    .album-shell{
+      width: min(940px, 100%);
+      background: #fff;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      overflow:hidden;
+      position: relative;
+    }
+    .album-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fff, #f9f4f3);
+    }
+    .album-title{
+      font-family:"Playfair Display", serif;
+      font-size: 20px;
+      letter-spacing:.2px;
+      color:#3a2f30;
+    }
+    .album-title img{
+      height: 36px;
+      width: auto;
+      display:block;
+    }
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border:0;
+    }
+    .album-close{
+      all: unset;
+      cursor: pointer;
+      font-size: 20px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #ffffffc8;
+    }
+    .album-stage{
+      position: relative;
+      background: #111;
+      min-height: 360px;
+      display:grid;
+      place-items:center;
+    }
+    .album-stage img{
+      width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      display:block;
+      background: #111;
+    }
+    .album-nav{
+      position:absolute;
+      inset: 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 0 10px;
+    }
+    .album-nav button{
+      pointer-events:auto;
+      all: unset;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--line);
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .album-strip{
+      display:flex;
+      gap: 10px;
+      padding: 12px 14px 16px;
+      overflow-x: auto;
+      border-top: 1px solid var(--line);
+      background: #faf7f6;
+    }
+    .album-thumb{
+      width: 88px;
+      height: 68px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      object-fit: cover;
+      cursor: pointer;
+      opacity: .75;
+    }
+    .album-thumb.active{
+      opacity: 1;
+      outline: 2px solid #bfa07a;
+      outline-offset: 2px;
+    }
+    @media (max-width: 640px){
+      .album-stage{ min-height: 300px; }
+      .album-stage img{ max-height: 420px; }
+      .album-thumb{ width: 72px; height: 56px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="petal p1"></div>
+  <div class="petal p2"></div>
+  <div class="petal p3"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3c1.6 2.3 1.6 4.4 0 6.2C10.4 7.4 10.4 5.3 12 3Z" fill="currentColor" opacity=".85"/>
+            <path d="M21 12c-2.3 1.6-4.4 1.6-6.2 0 1.8-1.6 3.9-1.6 6.2 0Z" fill="currentColor" opacity=".85"/>
+            <path d="M12 21c-1.6-2.3-1.6-4.4 0-6.2 1.6 1.8 1.6 3.9 0 6.2Z" fill="currentColor" opacity=".85"/>
+            <path d="M3 12c2.3-1.6 4.4-1.6 6.2 0-1.8 1.6-3.9 1.6-6.2 0Z" fill="currentColor" opacity=".85"/>
+            <circle cx="12" cy="12" r="1.7" fill="currentColor"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">Yubi Hana</div>
+          <div class="small">Handcrafted Press-on Nails</div>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="ranking.html">Value your Collection</a>
+      </nav>
+
+      <div class="social" aria-label="Social links">
+        <a class="icon-btn" href="INSTAGRAM" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="5" y="5" width="14" height="14" rx="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="3.5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="16.5" cy="7.5" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+        <a class="icon-btn" href="TIKTOK" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M14 3v11.2a3.8 3.8 0 1 1-3.1-3.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 6.2c1.1 2.1 3 3.3 5 3.5V6.5c-1.6-.2-3.4-1.1-5-3.5Z" fill="currentColor" opacity=".9"/>
+          </svg>
+        </a>
+        <a class="icon-btn" href="XIAOHONGSHU" target="_blank" rel="noopener noreferrer" aria-label="Xiaohongshu (小红书)">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 7h10M9 11h6M8 15h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 4h12a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="2" opacity=".9"/>
+          </svg>
+        </a>
+        <a class="icon-btn" href="X" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <section class="card hero">
+      <div class="kicker"><span class="dot"></span> Collections</div>
+      <h1>Four tiers for every mood and moment.</h1>
+      <p class="subtitle">
+        Discover the Yubi Hana collection lineup, grouped by finish, craftsmanship, and statement level.
+        Each category is styled like a mini photo album for quick visual browsing.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Collections">
+      <div class="card collection-card col-3">
+        <button class="album-btn" type="button" data-title="High Collection" data-icon="assets/ranking/icons/tier-high-collection.svg" data-images="assets/shot2.jpg" aria-label="Open High Collection album">
+          <div class="album" aria-hidden="true">
+            <div class="frame back" style="background-image:url('assets/shot2.jpg');"></div>
+            <div class="frame mid" style="background-image:url('assets/shot2.jpg');"></div>
+            <div class="frame top" style="background-image:url('assets/shot2.jpg');">
+              <span class="label">High</span>
+              <span class="shine" aria-hidden="true"></span>
+            </div>
+          </div>
+        </button>
+        <div class="collection-title">
+          <img src="assets/ranking/icons/tier-high-collection.svg" alt="aaHigh Collection">
+        </div>
+        <p>Premium artistry with bold shapes, layered finishes, and standout textures.</p>
+      </div>
+
+      <div class="card collection-card col-3">
+        <button class="album-btn" type="button" data-title="Diamond" data-icon="assets/ranking/icons/tier-diamond.svg" data-images="assets/ranking/Yubihana/Diamond/done/StarDust.jpg,assets/ranking/Yubihana/Diamond/done/Violet_Nebula1.jpg,assets/ranking/Yubihana/Diamond/done/Rose_manta.jpg,assets/ranking/Yubihana/Diamond/done/Cupid_Arrow.jpg,assets/ranking/Yubihana/Diamond/done/Flower.jpg,assets/ranking/Yubihana/Diamond/done/Violet_Drops.jpg,assets/ranking/Yubihana/Diamond/done/Violet_Drop2.jpg,assets/ranking/Yubihana/Diamond/done/bluesky.jpg,assets/ranking/Yubihana/Diamond/done/valentine.jpg,assets/ranking/Yubihana/Diamond/done/Violet_Nebula2.jpg,assets/ranking/Yubihana/Diamond/done/Rose_manta2.jpg" aria-label="Open Diamond album">
+          <div class="album" aria-hidden="true">
+            <div class="frame back" style="background-image:url('assets/ranking/Yubihana/Diamond/done/StarDust.jpg');"></div>
+            <div class="frame mid" style="background-image:url('assets/ranking/Yubihana/Diamond/done/Violet_Nebula1.jpg');"></div>
+            <div class="frame top" style="background-image:url('assets/ranking/Yubihana/Diamond/done/Rose_manta.jpg');">
+              <span class="label">Diamond</span>
+              <span class="shine" aria-hidden="true"></span>
+            </div>
+          </div>
+        </button>
+        <div class="collection-title">
+          <img src="assets/ranking/icons/tier-diamond.svg" alt="Diamond">
+        </div>
+        <p>High-shine details and statement accents for your most elevated looks.</p>
+
+      </div>
+
+      <div class="card collection-card col-3">
+        <button class="album-btn" type="button" data-title="Gold" data-icon="assets/ranking/icons/tier-gold.svg" data-images="assets/ranking/Yubihana/D/D1.jpg,assets/ranking/Yubihana/D/D2.jpg,assets/ranking/Yubihana/D/D3.jpg,assets/ranking/Yubihana/D/D4.jpg,assets/ranking/Yubihana/D/D4_a.jpg,assets/ranking/Yubihana/D/D4_b.jpg,assets/ranking/Yubihana/D/D5.jpg,assets/ranking/Yubihana/D/D5_a.jpg,assets/ranking/Yubihana/D/D5b.jpg,assets/ranking/Yubihana/D/D5_a.jpg,assets/ranking/Yubihana/D/D5b.jpg" aria-label="Open Gold album">
+          <div class="album" aria-hidden="true">
+            <div class="frame back" style="background-image:url('assets/ranking/Yubihana/D/D1.jpg');"></div>
+            <div class="frame mid" style="background-image:url('assets/ranking/Yubihana/D/D3.jpg');"></div>
+            <div class="frame top" style="background-image:url('assets/ranking/Yubihana/D/D5.jpg');">
+              <span class="label">Gold</span>
+              <span class="shine" aria-hidden="true"></span>
+            </div>
+          </div>
+        </button>
+        <div class="collection-title">
+          <img src="assets/ranking/icons/tier-gold.svg" alt="Gold">
+        </div>
+        <p>Balanced sophistication, soft metallic highlights, and everyday elegance.</p>
+      </div>
+
+      <div class="card collection-card col-3">
+        <button class="album-btn" type="button" data-title="Pink" data-icon="assets/ranking/icons/tier-pink.svg" data-images="assets/ranking/Yubihana/A/A1.jpg,assets/ranking/Yubihana/A/A2.jpg,assets/ranking/Yubihana/A/A3.jpg,assets/ranking/Yubihana/A/A5.jpg,assets/ranking/Yubihana/A/A6.jpg,assets/ranking/Yubihana/B/B1.jpg,assets/ranking/Yubihana/B/B2.jpg,assets/ranking/Yubihana/B/B4.jpg,assets/ranking/Yubihana/B/B5.jpg,assets/ranking/Yubihana/B/B6.jpg,assets/ranking/Yubihana/C/C1.jpg,assets/ranking/Yubihana/C/C2.jpg,assets/ranking/Yubihana/C/C3.jpg,assets/ranking/Yubihana/C/C4.jpg,assets/ranking/Yubihana/C/C5.jpg,assets/ranking/Yubihana/C/C6.jpg" aria-label="Open Pink album">
+          <div class="album" aria-hidden="true">
+            <div class="frame back" style="background-image:url('assets/ranking/Yubihana/A/A1.jpg');"></div>
+            <div class="frame mid" style="background-image:url('assets/ranking/Yubihana/B/B1.jpg');"></div>
+            <div class="frame top" style="background-image:url('assets/ranking/Yubihana/C/C1.jpg');">
+              <span class="label">Pink</span>
+              <span class="shine" aria-hidden="true"></span>
+            </div>
+          </div>
+        </button>
+        <div class="collection-title">
+          <img src="assets/ranking/icons/tier-pink.svg" alt="Pink">
+        </div>
+        <p>Romantic, airy sets with soft blush tones and delicate details.</p>
+      </div>
+    </section>
+
+    <div class="album-modal" id="albumModal" aria-hidden="true">
+      <div class="album-shell" role="dialog" aria-modal="true" aria-labelledby="albumTitle">
+        <div class="album-header">
+          <div class="album-title" id="albumTitle">
+            <img id="albumIcon" src="" alt="">
+            <span class="sr-only" id="albumTitleText">Album</span>
+          </div>
+          <button class="album-close" type="button" aria-label="Close album">✕</button>
+        </div>
+        <div class="album-stage">
+          <img id="albumMain" alt="">
+          <div class="album-nav">
+            <button type="button" id="albumPrev" aria-label="Previous image">‹</button>
+            <button type="button" id="albumNext" aria-label="Next image">›</button>
+          </div>
+        </div>
+        <div class="album-strip" id="albumStrip"></div>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        <span class="small">© <span id="year"></span> Yubi Hana. Bloom on your fingertips.</span>
+      </div>
+      <div class="small">
+        <a href="PRIVACY_URL" target="_blank" rel="noopener noreferrer">Privacy</a>
+        &nbsp;•&nbsp;
+        <a href="TERMS_URL" target="_blank" rel="noopener noreferrer">Terms</a>
+        &nbsp;•&nbsp;
+        <a href="REFUND_URL" target="_blank" rel="noopener noreferrer">Refunds</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const PRIVACY_URL = "PRIVACY_URL";
+    const TERMS_URL = "TERMS_URL";
+    const REFUND_URL = "REFUND_URL";
+    const INSTAGRAM = "yubi.hana1";
+    const TIKTOK = "yubi_hana8";
+    const XIAOHONGSHU = "XIAOHONGSHU";
+    const X = "iyubihana";
+
+    function toSocialUrl(platform, value){
+      const v = String(value || "").trim();
+      if (!v || v === platform.toUpperCase()) return "";
+      if (v.includes("://")) return v;
+      const handle = v.replace(/^@/, "");
+      if (!handle) return "";
+      if (platform === "instagram") return `https://www.instagram.com/${INSTAGRAM}/`;
+      if (platform === "tiktok") return `https://www.tiktok.com/@${TIKTOK}`;
+      if (platform === "x") return `https://x.com/${X}`;
+      return v;
+    }
+
+    const map = {
+      "PRIVACY_URL": PRIVACY_URL,
+      "TERMS_URL": TERMS_URL,
+      "REFUND_URL": REFUND_URL,
+      "INSTAGRAM": toSocialUrl("instagram", INSTAGRAM),
+      "TIKTOK": toSocialUrl("tiktok", TIKTOK),
+      "XIAOHONGSHU": toSocialUrl("xiaohongshu", XIAOHONGSHU),
+      "X": toSocialUrl("x", X),
+    };
+    for (const [k,v] of Object.entries(map)) {
+      for (const a of document.querySelectorAll(`a[href="${k}"]`)) {
+        if (!v) {
+          a.removeAttribute("href");
+          a.style.display = "none";
+        } else {
+          a.href = v;
+        }
+      }
+    }
+
+    const modal = document.getElementById("albumModal");
+    const albumTitle = document.getElementById("albumTitle");
+    const albumIcon = document.getElementById("albumIcon");
+    const albumTitleText = document.getElementById("albumTitleText");
+    const albumMain = document.getElementById("albumMain");
+    const albumStrip = document.getElementById("albumStrip");
+    const btnPrev = document.getElementById("albumPrev");
+    const btnNext = document.getElementById("albumNext");
+    const btnClose = modal.querySelector(".album-close");
+    let currentImages = [];
+    let currentIndex = 0;
+    let lastFocused = null;
+
+    function renderAlbum(){
+      const src = currentImages[currentIndex];
+      albumMain.src = src;
+      albumMain.alt = `${albumTitle.textContent} image ${currentIndex + 1}`;
+      albumStrip.innerHTML = "";
+      currentImages.forEach((img, idx) => {
+        const thumb = document.createElement("img");
+        thumb.src = img;
+        thumb.alt = `${albumTitle.textContent} thumbnail ${idx + 1}`;
+        thumb.className = "album-thumb" + (idx === currentIndex ? " active" : "");
+        thumb.addEventListener("click", () => {
+          currentIndex = idx;
+          renderAlbum();
+        });
+        albumStrip.appendChild(thumb);
+      });
+    }
+
+    function openAlbum(title, images, icon){
+      currentImages = images;
+      currentIndex = 0;
+      albumTitleText.textContent = title;
+      if (icon) {
+        albumIcon.src = icon;
+        albumIcon.alt = `${title} icon`;
+        albumIcon.style.display = "block";
+      } else {
+        albumIcon.removeAttribute("src");
+        albumIcon.alt = "";
+        albumIcon.style.display = "none";
+      }
+      renderAlbum();
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      btnClose.focus();
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeAlbum(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll(".album-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const title = btn.dataset.title || "Album";
+        const images = (btn.dataset.images || "")
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+        if (!images.length) return;
+        lastFocused = btn;
+        openAlbum(title, images, btn.dataset.icon);
+      });
+    });
+
+    btnPrev.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      renderAlbum();
+    });
+    btnNext.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      renderAlbum();
+    });
+    btnClose.addEventListener("click", closeAlbum);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeAlbum();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (!modal.classList.contains("open")) return;
+      if (e.key === "Escape") closeAlbum();
+      if (e.key === "ArrowLeft") btnPrev.click();
+      if (e.key === "ArrowRight") btnNext.click();
+    });
+  </script>
+</body>
+</html>
