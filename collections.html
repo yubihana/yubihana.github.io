@@ -487,6 +487,7 @@ Yubi Hana — Collections Page
         <a href="index.html">Home</a>
         <a href="collections.html">Collections</a>
         <a href="ranking.html">Value your Collection</a>
+        <a href="ORDER_URL" target="_blank" rel="noopener noreferrer">Order</a>
       </nav>
 
       <div class="social" aria-label="Social links">
@@ -520,10 +521,13 @@ Yubi Hana — Collections Page
     <section class="card hero">
       <div class="kicker"><span class="dot"></span> Collections</div>
       <h1>For Every Moment</h1>
-      <h1>Anything Match Your Mood?</h1>
+      <h1>Find a Set to Match Your Mood</h1>
       <p class="subtitle">
         Discover the Yubi Hana collection lineup
       </p>
+      <div style="margin-top:14px; display:flex; justify-content:center;">
+        <a class="btn btn-primary" href="ORDER_URL" target="_blank" rel="noopener noreferrer">Shop this collection ↗</a>
+      </div>
     </section>
 
     <section class="grid" aria-label="Collections">
@@ -539,7 +543,7 @@ Yubi Hana — Collections Page
           </div>
         </button>
         <div class="collection-title">
-          <img src="assets/ranking/icons/tier-high-collection.svg" alt="aaHigh Collection">
+          <img src="assets/ranking/icons/tier-high-collection.svg" alt="High Collection">
         </div>
         <p>Premium artistry with bold shapes, layered finishes, and standout textures.</p>
       </div>
@@ -634,9 +638,10 @@ Yubi Hana — Collections Page
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    const PRIVACY_URL = "PRIVACY_URL";
-    const TERMS_URL = "TERMS_URL";
-    const REFUND_URL = "REFUND_URL";
+    const ORDER_URL = "https://yubihana.square.site/";
+    const PRIVACY_URL = "privacy.html";
+    const TERMS_URL = "terms.html";
+    const REFUND_URL = "refunds.html";
     const INSTAGRAM = "yubi.hana1";
     const TIKTOK = "yubi_hana8";
     const XIAOHONGSHU = "XIAOHONGSHU";
@@ -653,6 +658,8 @@ Yubi Hana — Collections Page
       if (platform === "x") return `https://x.com/${X}`;
       return v;
     }
+
+    for (const a of document.querySelectorAll('a[href="ORDER_URL"]')) a.href = ORDER_URL;
 
     const map = {
       "PRIVACY_URL": PRIVACY_URL,
