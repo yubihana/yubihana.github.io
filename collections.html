@@ -530,9 +530,9 @@ Yubi Hana — Collections Page
       <div class="card collection-card col-3">
         <button class="album-btn" type="button" data-title="High Collection" data-icon="assets/ranking/icons/tier-high-collection.svg" data-images="assets/shot2.jpg" aria-label="Open High Collection album">
           <div class="album" aria-hidden="true">
-            <div class="frame back" style="background-image:url('assets/shot2.jpg');"></div>
-            <div class="frame mid" style="background-image:url('assets/shot2.jpg');"></div>
-            <div class="frame top" style="background-image:url('assets/shot2.jpg');">
+            <div class="frame back"></div>
+            <div class="frame mid"></div>
+            <div class="frame top">
               <span class="label">High</span>
               <span class="shine" aria-hidden="true"></span>
             </div>
@@ -547,9 +547,9 @@ Yubi Hana — Collections Page
       <div class="card collection-card col-3">
         <button class="album-btn" type="button" data-title="Diamond" data-icon="assets/ranking/icons/tier-diamond.svg" data-images="assets/ranking/Yubihana/Diamond/done/StarDust.jpg,assets/ranking/Yubihana/Diamond/done/Violet_Nebula1.jpg,assets/ranking/Yubihana/Diamond/done/Rose_manta.jpg,assets/ranking/Yubihana/Diamond/done/Cupid_Arrow.jpg,assets/ranking/Yubihana/Diamond/done/Flower.jpg,assets/ranking/Yubihana/Diamond/done/Violet_Drops.jpg,assets/ranking/Yubihana/Diamond/done/Violet_Drop2.jpg,assets/ranking/Yubihana/Diamond/done/bluesky.jpg,assets/ranking/Yubihana/Diamond/done/valentine.jpg,assets/ranking/Yubihana/Diamond/done/Violet_Nebula2.jpg,assets/ranking/Yubihana/Diamond/done/Rose_manta2.jpg" aria-label="Open Diamond album">
           <div class="album" aria-hidden="true">
-            <div class="frame back" style="background-image:url('assets/ranking/Yubihana/Diamond/done/StarDust.jpg');"></div>
-            <div class="frame mid" style="background-image:url('assets/ranking/Yubihana/Diamond/done/Violet_Nebula1.jpg');"></div>
-            <div class="frame top" style="background-image:url('assets/ranking/Yubihana/Diamond/done/Rose_manta.jpg');">
+            <div class="frame back"></div>
+            <div class="frame mid"></div>
+            <div class="frame top">
               <span class="label">Diamond</span>
               <span class="shine" aria-hidden="true"></span>
             </div>
@@ -565,9 +565,9 @@ Yubi Hana — Collections Page
       <div class="card collection-card col-3">
         <button class="album-btn" type="button" data-title="Gold" data-icon="assets/ranking/icons/tier-gold.svg" data-images="assets/ranking/Yubihana/D/D1.jpg,assets/ranking/Yubihana/D/D2.jpg,assets/ranking/Yubihana/D/D3.jpg,assets/ranking/Yubihana/D/D4.jpg,assets/ranking/Yubihana/D/D4_a.jpg,assets/ranking/Yubihana/D/D4_b.jpg,assets/ranking/Yubihana/D/D5.jpg,assets/ranking/Yubihana/D/D5_a.jpg,assets/ranking/Yubihana/D/D5b.jpg,assets/ranking/Yubihana/D/D5_a.jpg,assets/ranking/Yubihana/D/D5b.jpg" aria-label="Open Gold album">
           <div class="album" aria-hidden="true">
-            <div class="frame back" style="background-image:url('assets/ranking/Yubihana/D/D1.jpg');"></div>
-            <div class="frame mid" style="background-image:url('assets/ranking/Yubihana/D/D3.jpg');"></div>
-            <div class="frame top" style="background-image:url('assets/ranking/Yubihana/D/D5.jpg');">
+            <div class="frame back"></div>
+            <div class="frame mid"></div>
+            <div class="frame top">
               <span class="label">Gold</span>
               <span class="shine" aria-hidden="true"></span>
             </div>
@@ -582,9 +582,9 @@ Yubi Hana — Collections Page
       <div class="card collection-card col-3">
         <button class="album-btn" type="button" data-title="Pink" data-icon="assets/ranking/icons/tier-pink.svg" data-images="assets/ranking/Yubihana/A/A1.jpg,assets/ranking/Yubihana/A/A2.jpg,assets/ranking/Yubihana/A/A3.jpg,assets/ranking/Yubihana/A/A5.jpg,assets/ranking/Yubihana/A/A6.jpg,assets/ranking/Yubihana/B/B1.jpg,assets/ranking/Yubihana/B/B2.jpg,assets/ranking/Yubihana/B/B4.jpg,assets/ranking/Yubihana/B/B5.jpg,assets/ranking/Yubihana/B/B6.jpg,assets/ranking/Yubihana/C/C1.jpg,assets/ranking/Yubihana/C/C2.jpg,assets/ranking/Yubihana/C/C3.jpg,assets/ranking/Yubihana/C/C4.jpg,assets/ranking/Yubihana/C/C5.jpg,assets/ranking/Yubihana/C/C6.jpg" aria-label="Open Pink album">
           <div class="album" aria-hidden="true">
-            <div class="frame back" style="background-image:url('assets/ranking/Yubihana/A/A1.jpg');"></div>
-            <div class="frame mid" style="background-image:url('assets/ranking/Yubihana/B/B1.jpg');"></div>
-            <div class="frame top" style="background-image:url('assets/ranking/Yubihana/C/C1.jpg');">
+            <div class="frame back"></div>
+            <div class="frame mid"></div>
+            <div class="frame top">
               <span class="label">Pink</span>
               <span class="shine" aria-hidden="true"></span>
             </div>
@@ -684,19 +684,68 @@ Yubi Hana — Collections Page
     const btnNext = document.getElementById("albumNext");
     const btnClose = modal.querySelector(".album-close");
     let currentImages = [];
+    let currentThumbs = [];
     let currentIndex = 0;
     let lastFocused = null;
+
+    function parseCsv(value) {
+      return String(value || "")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
+
+    function toThumbnailPath(src) {
+      return src.replace(/(\.[a-z0-9]+)$/i, "_thumb$1");
+    }
+
+    function setFramePreview(frame, thumbSrc, fullSrc) {
+      if (!thumbSrc && !fullSrc) return;
+      const probe = new Image();
+      probe.onload = () => {
+        frame.style.backgroundImage = `url("${thumbSrc}")`;
+      };
+      probe.onerror = () => {
+        frame.style.backgroundImage = `url("${fullSrc}")`;
+      };
+      probe.src = thumbSrc || fullSrc;
+    }
+
+    function hydrateAlbumCards() {
+      document.querySelectorAll(".album-btn").forEach((btn) => {
+        const images = parseCsv(btn.dataset.images);
+        if (!images.length) return;
+
+        const existingThumbs = parseCsv(btn.dataset.thumbs);
+        const thumbs = images.map((img, idx) => existingThumbs[idx] || toThumbnailPath(img));
+        btn.dataset.thumbs = thumbs.join(",");
+
+        const frames = btn.querySelectorAll(".frame");
+        frames.forEach((frame, idx) => {
+          const imageIndex = Math.min(idx, images.length - 1);
+          setFramePreview(frame, thumbs[imageIndex], images[imageIndex]);
+        });
+      });
+    }
 
     function renderAlbum(){
       const src = currentImages[currentIndex];
       albumMain.src = src;
-      albumMain.alt = `${albumTitle.textContent} image ${currentIndex + 1}`;
+      albumMain.alt = `${albumTitleText.textContent} image ${currentIndex + 1}`;
       albumStrip.innerHTML = "";
       currentImages.forEach((img, idx) => {
         const thumb = document.createElement("img");
-        thumb.src = img;
-        thumb.alt = `${albumTitle.textContent} thumbnail ${idx + 1}`;
+        const thumbSrc = currentThumbs[idx] || toThumbnailPath(img);
+        thumb.src = thumbSrc;
+        thumb.alt = `${albumTitleText.textContent} thumbnail ${idx + 1}`;
         thumb.className = "album-thumb" + (idx === currentIndex ? " active" : "");
+        thumb.loading = "lazy";
+        thumb.decoding = "async";
+        thumb.addEventListener("error", () => {
+          if (thumb.src !== new URL(img, window.location.href).href) {
+            thumb.src = img;
+          }
+        });
         thumb.addEventListener("click", () => {
           currentIndex = idx;
           renderAlbum();
@@ -705,8 +754,9 @@ Yubi Hana — Collections Page
       });
     }
 
-    function openAlbum(title, images, icon){
+    function openAlbum(title, images, thumbs, icon){
       currentImages = images;
+      currentThumbs = thumbs;
       currentIndex = 0;
       albumTitleText.textContent = title;
       if (icon) {
@@ -732,16 +782,16 @@ Yubi Hana — Collections Page
       if (lastFocused) lastFocused.focus();
     }
 
+    hydrateAlbumCards();
+
     document.querySelectorAll(".album-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const title = btn.dataset.title || "Album";
-        const images = (btn.dataset.images || "")
-          .split(",")
-          .map((s) => s.trim())
-          .filter(Boolean);
+        const images = parseCsv(btn.dataset.images);
+        const thumbs = parseCsv(btn.dataset.thumbs);
         if (!images.length) return;
         lastFocused = btn;
-        openAlbum(title, images, btn.dataset.icon);
+        openAlbum(title, images, thumbs, btn.dataset.icon);
       });
     });
 

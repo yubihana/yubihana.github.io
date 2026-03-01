@@ -310,6 +310,36 @@ Yubi Hana — GitHub Pages Welcome Landing
       background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.08) 60%, rgba(0,0,0,.25) 100%);
       border-radius: var(--radius);
     }
+    .hero-media-activate{
+      all: unset;
+      position:absolute;
+      inset:0;
+      display:block;
+      cursor:pointer;
+    }
+    .hero-media-activate img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .hero-media-play{
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform: translate(-50%, -50%);
+      width:64px;
+      height:64px;
+      border-radius:999px;
+      border:1px solid #ffffffd0;
+      background: rgba(255,255,255,.9);
+      color:#3a2f30;
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.16);
+      pointer-events:none;
+    }
     .hero-media video{
       position:absolute;
       inset:0;
@@ -549,18 +579,25 @@ Yubi Hana — GitHub Pages Welcome Landing
           <span class="pill">Reusable</span>
           <span class="pill">Comfort fit</span>
           <span class="pill">Salon finish</span>
-          <span class="pill">Sakura-inspired</span>
         </div>
       </div>
 
       <div class="card hero-right" aria-label="Hero image">
         <!-- Use the same looping shot video to keep the hero motioned -->
         <div class="hero-media">
-          <video autoplay muted loop playsinline preload="metadata" poster="assets/shot2.jpg">
-            <source src="assets/shot2.mp4" type="video/mp4">
-            <source src="assets/shot2.webm" type="video/webm">
-            Your browser does not support the video tag.
-          </video>
+          <button
+            type="button"
+            class="hero-media-activate"
+            id="heroVideoActivate"
+            aria-label="Play hero video"
+            data-poster-full="assets/shot2.jpg"
+            data-poster-thumb="assets/shot2_thumb.jpg"
+            data-video-mp4="assets/shot2.mp4"
+            data-video-webm="assets/shot2.webm"
+          >
+            <img id="heroVideoThumb" src="assets/shot2.jpg" alt="Hero video preview" loading="lazy" decoding="async">
+            <span class="hero-media-play" aria-hidden="true">▶</span>
+          </button>
         </div>
         <div class="badge">
           <div>
@@ -610,7 +647,16 @@ Yubi Hana — GitHub Pages Welcome Landing
         </div>
 
         <a href="collections.html" aria-label="Open collections">
-          <img src="assets/shot1.jpg" alt="Collections screenshot" style="width:66%; height:auto; display:block; margin:12px auto 0; border-radius:14px;">
+          <img
+            id="collectionsPreview"
+            src="assets/shot1.jpg"
+            data-full-src="assets/shot1.jpg"
+            data-thumb-src="assets/shot1_thumb.jpg"
+            alt="Collections screenshot"
+            loading="lazy"
+            decoding="async"
+            style="width:66%; height:auto; display:block; margin:12px auto 0; border-radius:14px;"
+          >
         </a>
 
         <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -713,6 +759,68 @@ Yubi Hana — GitHub Pages Welcome Landing
         }
       }
     }
+
+    function tryThumbWithFallback(target, thumbSrc, fullSrc){
+      if (!target || !fullSrc) return;
+      const probe = new Image();
+      probe.onload = () => { target.src = thumbSrc; };
+      probe.onerror = () => { target.src = fullSrc; };
+      probe.src = thumbSrc || fullSrc;
+    }
+
+    function activateFullImageOnClick(img){
+      if (!img) return;
+      const fullSrc = img.dataset.fullSrc || img.src;
+      const thumbSrc = img.dataset.thumbSrc || fullSrc.replace(/(\.[a-z0-9]+)$/i, "_thumb$1");
+      tryThumbWithFallback(img, thumbSrc, fullSrc);
+
+      const link = img.closest("a[href]");
+      img.addEventListener("click", (e) => {
+        if (img.dataset.fullLoaded === "true") return;
+        img.dataset.fullLoaded = "true";
+        img.src = fullSrc;
+        if (link) e.preventDefault();
+      });
+    }
+
+    function setupHeroVideoOnDemand(){
+      const trigger = document.getElementById("heroVideoActivate");
+      const thumb = document.getElementById("heroVideoThumb");
+      if (!trigger || !thumb) return;
+
+      const posterFull = trigger.dataset.posterFull || "assets/shot2.jpg";
+      const posterThumb = trigger.dataset.posterThumb || posterFull.replace(/(\.[a-z0-9]+)$/i, "_thumb$1");
+      tryThumbWithFallback(thumb, posterThumb, posterFull);
+
+      trigger.addEventListener("click", () => {
+        const video = document.createElement("video");
+        video.autoplay = true;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+        video.poster = posterFull;
+
+        const mp4 = trigger.dataset.videoMp4;
+        const webm = trigger.dataset.videoWebm;
+        if (mp4) {
+          const s1 = document.createElement("source");
+          s1.src = mp4;
+          s1.type = "video/mp4";
+          video.appendChild(s1);
+        }
+        if (webm) {
+          const s2 = document.createElement("source");
+          s2.src = webm;
+          s2.type = "video/webm";
+          video.appendChild(s2);
+        }
+        trigger.replaceWith(video);
+      }, { once: true });
+    }
+
+    setupHeroVideoOnDemand();
+    activateFullImageOnClick(document.getElementById("collectionsPreview"));
   </script>
 </body>
 </html>
